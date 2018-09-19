@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -29,4 +29,8 @@
 
 canvas {
   border: 1px solid black;
+}
+
+.stories-container {
+  display: flex;
 }

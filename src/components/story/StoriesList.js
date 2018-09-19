@@ -1,14 +1,24 @@
 import React from 'react'
 import StoryItem from './StoryItem'
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+
 
 const StoriesList = props => {
-  console.log(props)
+  console.log('stories list props', props)
   const renderStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
 
   return(
-    <div className="stories-list">
-      {renderStoryItems}
-    </div>
+    // without material ui
+    // <div className="stories-list">
+    //   {renderStoryItems}
+    // </div>
+
+    <Grid item >
+      <List>
+        {renderStoryItems}
+      </List>
+    </Grid>
   )
 }
 

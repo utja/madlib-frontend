@@ -35,8 +35,10 @@ const initialStoryState = {
 export default function storyReducer(state = initialStoryState, action) {
   switch(action.type) {
     case 'ADD_STORY':
-        return { ...state, stories: action.payload };
+      return { ...state, stories: action.payload };
+    case 'SELECT_STORY':
+      return {...state, selectedStory: action.payload }
     default:
-        return state;
+      return state;
   }
 }
