@@ -12,6 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu'
+import MenuButton from './MenuButton'
 
 const styles = {
   root: {
@@ -25,6 +26,43 @@ const styles = {
     marginRight: 20,
   },
 };
+
+const menuItems = [
+  {
+    id: "home",
+    name: "Home",
+    link: "/"
+  },
+  {
+    id: "stories",
+    name: "View Stories",
+    link: "/stories"
+  },
+  {
+    id: "newStory",
+    name: "Create a New Story",
+    link: "/stories/new"
+  }
+]
+
+const userItems = [
+  {
+    id: "profile",
+    name: "Profile",
+    link: "/profile"
+  },
+  {
+    id: "settings",
+    name: "Account Settings",
+    link: "/settings"
+  },
+  // make sure that logout button logs out
+  {
+    id: "logout",
+    name: "Logout",
+    link: "/logout"
+  }
+]
 
 class NavBar extends React.Component {
 
@@ -50,62 +88,14 @@ class NavBar extends React.Component {
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
     return(
+      // abstract menu buttons
       <AppBar position="static">
         <Toolbar>
-          <IconButton color="inherit" aria-label="Menu"
-            // aria-owns={open ? 'menu-appbar' : null}
-            // aria-haspopup="true"
-            onClick={this.handleMenu}
-            // color="inherit"
-            >
-            <MenuIcon />
-          </IconButton>
-          {/* <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={open}
-            onClose={this.handleClose}
-          >
-            <MenuItem onClick={this.handleClose}>Create Story</MenuItem>
-            <MenuItem onClick={this.handleClose}>Create Drawing</MenuItem>
-          </Menu> */}
+          <MenuButton items={menuItems} iconType={MenuIcon}/>
           <Typography variant="title" color="inherit" className={classes.grow}>
             Ad Scribitum
           </Typography>
-          <IconButton
-            aria-owns={open ? 'user-appbar' : null}
-            aria-haspopup="true"
-            onClick={this.handleMenu}
-            color="inherit"
-            aria-label="user"
-          >
-            <AccountCircle />
-          </IconButton>
-          <Menu
-            id="user-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={open}
-            onClose={this.handleClose}
-          >
-            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-            <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          </Menu>
+          <MenuButton items={userItems} iconType={AccountCircle} />
         </Toolbar>
       </AppBar>
     )
