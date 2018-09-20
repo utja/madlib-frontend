@@ -29,6 +29,32 @@ const initialStoryState = {
     story: 'The Link n Park app is cooler than this Ad Scribitum App but not cooler than the Linkin Park band.'
 
   }],
+  storyWords: [
+    {
+      id: 1,
+      category: 'noun',
+      value: '',
+      examples: 'book, dog'
+    },
+    {
+      id: 2,
+      category: 'adjective',
+      value: '',
+      examples: 'short, scary'
+    },
+    {
+      id: 3,
+      category: 'verb',
+      value: '',
+      examples: 'run, jump'
+    },
+    {
+      id: 4,
+      category: 'noun',
+      value: '',
+      examples: 'book, dog'
+    },
+  ],
   selectedStory: null
 }
 
