@@ -22,11 +22,16 @@ const WordInput = props => {
       margin="normal"
       variant="outlined"
       label={storyWord.category}
-      helperText={'i.e. ' + storyWord.examples}
+      helperText={'e.g. ' + storyWord.examples}
      className={classes.textField}
      onChange={handleChange}
      required
-    //  placeholder="Default Value"
+
+    // ***************************************************************************************************************************
+    // react does not like that the value is coming in as props and not set to the local state?
+    // the form state comes down as props
+    //  value={props.value}
+    // **************************************************************************************************************************
      >
     </TextField>
   )
