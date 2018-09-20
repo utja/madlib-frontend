@@ -13,66 +13,104 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu'
 
-const NavBar = props => {
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
 
-  const state = {
+class NavBar extends React.Component {
+
+  state = {
     auth: true,
     anchorEl: null,
   };
 
-  const handleChange = event => {
+  handleChange = event => {
     this.setState({ auth: event.target.checked });
   };
 
-  const handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
+  handleMenu = event => {
+    this.setState({ anchorEl: event.target }, ()=> console.log(this.state));
   };
 
-  const handleClose = () => {
+  handleClose = () => {
     this.setState({ anchorEl: null });
   };
 
-  return(
-    <AppBar position="static">
-          <Toolbar>
-            <IconButton color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="title" color="inherit" >
-              Ad Scribitum
-            </Typography>
-            {/* {state.auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
-            )} */}
-          </Toolbar>
-        </AppBar>
-  )
+  render(){
+    const { classes } = this.props;
+    const { auth, anchorEl } = this.state;
+    const open = Boolean(anchorEl);
+    return(
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton color="inherit" aria-label="Menu"
+            // aria-owns={open ? 'menu-appbar' : null}
+            // aria-haspopup="true"
+            onClick={this.handleMenu}
+            // color="inherit"
+            >
+            <MenuIcon />
+          </IconButton>
+          {/* <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={open}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>Create Story</MenuItem>
+            <MenuItem onClick={this.handleClose}>Create Drawing</MenuItem>
+          </Menu> */}
+          <Typography variant="title" color="inherit" className={classes.grow}>
+            Ad Scribitum
+          </Typography>
+          <IconButton
+            aria-owns={open ? 'user-appbar' : null}
+            aria-haspopup="true"
+            onClick={this.handleMenu}
+            color="inherit"
+            aria-label="user"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="user-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={open}
+            onClose={this.handleClose}
+          >
+            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+          </Menu>
+        </Toolbar>
+      </AppBar>
+    )
+
+  }
 }
 
-export default NavBar
+export default withStyles(styles)(NavBar);
