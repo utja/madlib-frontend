@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import StoriesList from '../components/story/StoriesList'
 import Story from '../components/story/Story'
-import InteractiveList from '../MaterialList'
+// import InteractiveList from '../MaterialList'
 import Grid from '@material-ui/core/Grid';
 
 // storiesContainer will render when user goes to /stories to see all stories
@@ -16,12 +16,11 @@ const StoriesContainer = props => {
       //   {props.stories.selectedStory ? <Story /> : null}
       //   {/* <InteractiveList /> */}
       // </div>
-      
-      <Grid className="stories-container" container justify="space-around">
-        <StoriesList stories={props.stories.stories}/>
-        {props.stories.selectedStory ? <Story /> : null}
-        {/* <InteractiveList /> */}
-      </Grid>
+    <Grid className="stories-container" container justify="space-around">
+      <StoriesList stories={props.stories.stories}/>
+      {props.stories.selectedStory ? <Story /> : null}
+      {/* <InteractiveList /> */}
+    </Grid>
   )
 }
 

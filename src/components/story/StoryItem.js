@@ -12,7 +12,7 @@ const StoryItem = props => {
     props.selectStory(props.story)
   }
 
-  const { user, title, story } = props.story
+  const { user, title } = props.story
   return(
     // without materiaul UI
     // <div onClick={handleClick}>

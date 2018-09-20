@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu'
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 
 class MenuButton extends React.Component {
@@ -23,8 +23,9 @@ class MenuButton extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
+    // const { classes } = this.props;
+    // const { auth, anchorEl } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const Wrapper = this.props.iconType;
     const listItems = this.props.items.map(item =>
