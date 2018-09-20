@@ -32,24 +32,28 @@ const initialStoryState = {
   storyWords: [
     {
       id: 1,
+      name: 'word-1',
       category: 'noun',
       value: '',
       examples: 'book, dog'
     },
     {
       id: 2,
+      name: 'word-2',
       category: 'adjective',
       value: '',
       examples: 'short, scary'
     },
     {
       id: 3,
+      name: 'word-3',
       category: 'verb',
       value: '',
       examples: 'run, jump'
     },
     {
       id: 4,
+      name: 'word-4',
       category: 'noun',
       value: '',
       examples: 'book, dog'

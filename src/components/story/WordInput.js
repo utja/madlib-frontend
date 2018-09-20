@@ -12,19 +12,22 @@ const styles = theme => ({
 const WordInput = props => {
   
 
-  console.log(props)
-  const { classes, storyWord } = props;
+  // console.log('wordinput props are', props)
+  const { classes, storyWord, handleChange } = props;
 
   return(
     <TextField
       id="outlined-helperText"
-      label={storyWord.category}
-      // placeholder="Default Value"
-      // className={classes.textField}
-      helperText={'i.e. ' + storyWord.examples}
+      name={storyWord.name}
       margin="normal"
       variant="outlined"
-     className={classes.textField}>
+      label={storyWord.category}
+      helperText={'i.e. ' + storyWord.examples}
+     className={classes.textField}
+     onChange={handleChange}
+     required
+    //  placeholder="Default Value"
+     >
     </TextField>
   )
 

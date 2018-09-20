@@ -17,20 +17,48 @@ const styles = theme => ({
   }
 });
 
-const StoryForm = props => {
+class StoryForm extends React.Component {
+  constructor(props){
+    super(props)
+    this.state ={
 
-  const mapWordInputs = props.storyWords.map(storyWord => <WordInput key={storyWord.id} storyWord={storyWord} />)
-  const { classes } = props;
+    }
+  }
+
+  componentDidMount(){
+    this.props.storyWords.forEach(storyWord => {
+      this.setState({
+        [storyWord.name]: ""
+      })
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   // map props to return an input for each word of the story
-  return (
-    <form noValidate autoComplete="off" className={classes.container}>
-      {/* render mapped inputs */}
-      {mapWordInputs}
-      <Button variant="contained" color="primary" className={classes.button}>
-        Submit
-      </Button>
-    </form>
-  )
+  // Object.values(this.state) to check for values?
+  render(){
+    const mapWordInputs = this.props.storyWords.map(storyWord => <WordInput key={storyWord.id} storyWord={storyWord} handleChange={this.handleChange}/>)
+    const { classes } = this.props;
+    return (
+      <form noValidate autoComplete="off" className={classes.container}>
+        {/* render mapped inputs */}
+        {mapWordInputs}
+        {Object.values(this.state).includes("") ?
+        <Button variant="outlined" disabled color="primary" className={classes.button}>
+          Submit
+        </Button> :
+        <Button variant="contained" color="primary" className={classes.button}>
+          Submit
+        </Button> 
+        }
+      </form>
+    )
+  }
 }
 
 export default withStyles(styles)(StoryForm)
