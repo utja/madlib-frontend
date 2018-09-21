@@ -56,12 +56,13 @@ class StoryForm extends React.Component {
 
         {/* // check if values in the inputs are empty */}
         {Object.values(this.state).includes("") ?
-        <Button variant="outlined" disabled color="primary" className={classes.button}>
-          Submit
-        </Button> :
-        <Button onClick={this.handleClick} variant="contained" color="primary" className={classes.button}>
-          Submit
-        </Button> 
+          <Button variant="outlined" disabled color="primary" className={classes.button}>
+            Submit
+          </Button> 
+        :
+          <Button onClick={this.handleClick} variant="contained" color="primary" className={classes.button}>
+            Submit
+          </Button> 
         }
       </form>
     )

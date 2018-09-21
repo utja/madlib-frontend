@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,7 +8,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Button from '@material-ui/core/Button';
 import MenuButton from './MenuButton'
+import { Link } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -59,14 +63,8 @@ const userItems = [
 ]
 
 class NavBar extends React.Component {
-
   state = {
-    auth: true,
-    anchorEl: null,
-  };
-
-  handleChange = event => {
-    this.setState({ auth: event.target.checked });
+    anchorEl: null
   };
 
   handleMenu = event => {
@@ -78,6 +76,7 @@ class NavBar extends React.Component {
   };
 
   render(){
+    const { loggedIn } = this.props
     const { classes } = this.props;
     return(
       <AppBar position="static">
@@ -86,7 +85,16 @@ class NavBar extends React.Component {
           <Typography variant="title" color="inherit" className={classes.grow}>
             Ad Scribitum
           </Typography>
-          <MenuButton items={userItems} iconType={AccountCircle} />
+          {/* render signup if not logged in */}
+          { loggedIn ? 
+            <Fragment>
+              <Button /* component={logout fn}*/> >Logout</Button>
+              <MenuButton items={userItems} iconType={AccountCircle} /> 
+            </Fragment>
+          : 
+              <Button color="inherit" component={Link} to="/signup">Signup</Button> 
+            }
+          
         </Toolbar>
       </AppBar>
     )
@@ -94,4 +102,14 @@ class NavBar extends React.Component {
   }
 }
 
-export default withStyles(styles)(NavBar);
+// refactor/destructure
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.user.loggedIn
+  }
+}
+
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps)
+  )(NavBar);

@@ -10,7 +10,6 @@ const styles = theme => ({
 })
 
 const WordInput = props => {
-  
 
   // console.log('wordinput props are', props)
   const { classes, storyWord, handleChange } = props;
@@ -23,15 +22,15 @@ const WordInput = props => {
       variant="outlined"
       label={storyWord.category}
       helperText={'e.g. ' + storyWord.examples}
-     className={classes.textField}
-     onChange={handleChange}
-     required
+      className={classes.textField}
+      onChange={handleChange}
+      required
 
-    // ***************************************************************************************************************************
-    // react does not like that the value is coming in as props and not set to the local state?
-    // the form state comes down as props
-    //  value={props.value}
-    // **************************************************************************************************************************
+      // ***************************************************************************************************************************
+      // react does not like that the value is coming in as props and not set to the local state?
+      // the form state comes down as props
+      //  value={props.value}
+      // **************************************************************************************************************************
      >
     </TextField>
   )
