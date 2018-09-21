@@ -20,6 +20,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+    backgroundColor: '#69F0AE'
   }
 });
 
@@ -58,6 +59,40 @@ class SignupForm extends React.Component{
           onChange={this.handleChange}
           required
           value={this.state.firstName}>
+        </TextField>
+        <TextField
+          id="input-last-name"
+          name='lastName'
+          margin="normal"
+          variant="filled"
+          label='last name'
+          className={classes.textField}
+          onChange={this.handleChange}
+          required
+          value={this.state.lastName}>
+        </TextField>
+        <TextField
+          id="input-username"
+          name='username'
+          margin="normal"
+          variant="filled"
+          label='username'
+          className={classes.textField}
+          onChange={this.handleChange}
+          required
+          value={this.state.username}>
+        </TextField>
+        <TextField
+          id="input-password"
+          name='password'
+          margin="normal"
+          variant="filled"
+          label='password'
+          type="password"
+          className={classes.textField}
+          onChange={this.handleChange}
+          required
+          value={this.state.password}>
         </TextField>
         
 
