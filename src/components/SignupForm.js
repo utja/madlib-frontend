@@ -35,6 +35,7 @@ class SignupForm extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log('hello')
     // dispatch SIGNUP_USER
   }
 
@@ -94,6 +95,17 @@ class SignupForm extends React.Component{
           required
           value={this.state.password}>
         </TextField>
+        <TextField
+          id="input-avatar"
+          name='avatar'
+          margin="normal"
+          variant="filled"
+          label='avatar'
+          className={classes.textField}
+          onChange={this.handleChange}
+          required
+          value={this.state.avatar}>
+        </TextField>
         
 
         {/* // check if values in the inputs are empty */}
@@ -102,7 +114,7 @@ class SignupForm extends React.Component{
             Submit
           </Button> 
         :
-          <Button onClick={this.handleClick} variant="contained" color="primary" className={classes.button}>
+          <Button type="submit" onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
             Submit
           </Button> 
         }
@@ -117,8 +129,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-
-
+  return {
+    createUser: (userData) => dispatch()
+  }
 }
 
 export default compose(

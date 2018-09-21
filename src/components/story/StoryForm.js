@@ -39,7 +39,7 @@ class StoryForm extends React.Component {
     })
   }
 
-  handleClick = (event) => {
+  handleSubmit = (event) => {
     console.log('hello')
   }
 
@@ -60,7 +60,7 @@ class StoryForm extends React.Component {
             Submit
           </Button> 
         :
-          <Button onClick={this.handleClick} variant="contained" color="primary" className={classes.button}>
+          <Button onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
             Submit
           </Button> 
         }
