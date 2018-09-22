@@ -5,6 +5,16 @@ import { withRouter, Redirect } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { createUser } from '../actions/user'
+
+const images = {
+  default: 'https://images.pexels.com/photos/419635/notebook-empty-design-paper-419635.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  lion: 'https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  dog: 'https://images.pexels.com/photos/69434/pexels-photo-69434.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  cat: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+
+}
+
 
 const styles = theme => ({
   root: {
@@ -29,13 +39,20 @@ class SignupForm extends React.Component{
     username: '',
     password: '',
     firstName: '',
-    lastName: '',
-    avatar: ''
+    lastName: ''
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
     console.log('hello')
+    this.props.createUser(this.state)
+    // debugger
+    // this.setState({
+    //   username: '',
+    //   password: '',
+    //   firstName: '',
+    //   lastName: ''
+    // })
     // dispatch SIGNUP_USER
   }
 
@@ -95,18 +112,6 @@ class SignupForm extends React.Component{
           required
           value={this.state.password}>
         </TextField>
-        <TextField
-          id="input-avatar"
-          name='avatar'
-          margin="normal"
-          variant="filled"
-          label='avatar'
-          className={classes.textField}
-          onChange={this.handleChange}
-          required
-          value={this.state.avatar}>
-        </TextField>
-        
 
         {/* // check if values in the inputs are empty */}
         {Object.values(this.state).includes("") ?
@@ -130,7 +135,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createUser: (userData) => dispatch()
+    createUser: (userData) => dispatch(createUser(userData))
   }
 }
 
