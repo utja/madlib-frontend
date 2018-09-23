@@ -21,7 +21,7 @@ export default function userReducer(state = initialUserState, action) {
       return {
         ...state,
         failedLogin: true,
-        error: action.payload,
+        error: action.payload.error,
         authenticatingUser: false
       }
     default:
