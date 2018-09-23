@@ -42,7 +42,7 @@ class SignupForm extends React.Component{
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value.toLowerCase()
+      [event.target.name]: event.target.value
     })
   }
 
