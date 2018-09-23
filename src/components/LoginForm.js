@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 
+
+//TODO make login dialog popup
+
 class LoginForm extends React.Component{
   state = {
     username: '',
