@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
@@ -7,6 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { createUser } from '../actions/user'
 import Typography from '@material-ui/core/Typography';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = theme => ({
   root: {
@@ -22,7 +26,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    backgroundColor: '#69F0AE'
+    // backgroundColor: '#69F0AE'
   }
 });
 
@@ -32,7 +36,8 @@ class SignupForm extends React.Component{
     password: '',
     passwordConfirmation: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    open: false
   }
 
   handleSubmit = (event) => {
@@ -44,6 +49,14 @@ class SignupForm extends React.Component{
     this.setState({
       [event.target.name]: event.target.value
     })
+  }
+
+  handleOpen = () => {
+    this.setState({open: true})
+  }
+
+  handleClose = () => {
+    this.setState({open: false})
   }
 
   render(){
@@ -61,10 +74,19 @@ class SignupForm extends React.Component{
       )
     }) : null
     return(
-      this.props.loggedIn ? 
-        <Redirect to="/" />
-        :
-        <form noValidate autoComplete="off" className={classes.container} onSubmit={this.handleSubmit}>
+      // this.props.loggedIn ? <Redirect to="/" /> :
+        <div className="signup-form">
+        <Button onClick={this.handleOpen}>Signup</Button>
+
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="signup-form-dialog-title"
+        >
+        <DialogTitle id="signup-form-dialog-title">Signup</DialogTitle>
+        <DialogContent>
+
+        <form id="signup-form" noValidate autoComplete="off" className={classes.container} onSubmit={this.handleSubmit}>
           {this.props.failedLogin ? 
             mapErrors
             :
@@ -74,74 +96,85 @@ class SignupForm extends React.Component{
             autoFocus
             name='firstName'
             margin="normal"
-            variant="filled"
+            fullWidth
             label='first name'
             className={classes.textField}
             onChange={this.handleChange}
             required
-            value={this.state.firstName}>
-          </TextField>
+            value={this.state.firstName} />
           <TextField
             id="input-last-name"
             name='lastName'
             margin="normal"
-            variant="filled"
+            fullWidth
             label='last name'
             className={classes.textField}
             onChange={this.handleChange}
             required
-            value={this.state.lastName}>
-          </TextField>
+            value={this.state.lastName} />
           <TextField
             id="input-username"
             name='username'
             margin="normal"
-            variant="filled"
+            fullWidth
             label='username'
             className={classes.textField}
             onChange={this.handleChange}
             required
             error={this.props.error ? this.props.error.includes(errorMessages.usernameDuplicate) : false}
-            value={this.state.username}>
-          </TextField>
+            value={this.state.username} />
           <TextField
             id="input-password"
             name='password'
             margin="normal"
-            variant="filled"
+            fullWidth
             label='password'
             type="password"
             className={classes.textField}
             onChange={this.handleChange}
             required
             error={this.props.error ? this.props.error.includes(errorMessages.passwordConfirmation) || this.props.error.includes(errorMessages.passwordLength) : false}
-            value={this.state.password}>
-          </TextField>
+            value={this.state.password} />
           <TextField
             id="input-password-confirmation"
             name='passwordConfirmation'
             margin="normal"
-            variant="filled"
+            fullWidth
             label='confirm password'
             type="password"
             className={classes.textField}
             onChange={this.handleChange}
             required
             error={this.props.error ? this.props.error.includes(errorMessages.passwordConfirmation) : false}
-            value={this.state.passwordConfirmation}>
-          </TextField>
+            value={this.state.passwordConfirmation} />
 
           {/* // check if values in the inputs are empty */}
+          <DialogActions>
+
           {Object.values(this.state).includes("") ?
-            <Button variant="outlined" disabled color="primary" className={classes.button}>
-              signup
-            </Button> 
+            <Fragment>
+              <Button onClick={this.handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button variant="outlined" disabled color="primary" className={classes.button}>
+                signup
+              </Button> 
+            </Fragment>
           :
-            <Button type="submit" variant="contained" color="primary" className={classes.button}>
-              signup
-            </Button> 
+            <Fragment>
+              <Button onClick={this.handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button form="signup-form" type="submit" variant="contained" color="primary" className={classes.button}>
+                signup
+              </Button> 
+            </Fragment>
           }
+          </DialogActions>
         </form>
+        </DialogContent>
+        </Dialog>
+        </div>
     )
   }
 

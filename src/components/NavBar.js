@@ -84,9 +84,7 @@ class NavBar extends React.Component {
             </Fragment>
           : 
             <Fragment>
-              {/* <SignupForm /> */}
-              {/* <Button color="inherit" component={Link} to="/signup">Signup</Button>  */}
-              {/* <Button color="inherit" onClick={this.handleLoginOpen} component={LoginForm}>Login</Button>  */}
+              <SignupForm />
               <LoginForm />
             </Fragment>
           }
