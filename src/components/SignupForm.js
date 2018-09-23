@@ -6,15 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { createUser } from '../actions/user'
-
-const images = {
-  default: 'https://images.pexels.com/photos/419635/notebook-empty-design-paper-419635.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  lion: 'https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  dog: 'https://images.pexels.com/photos/69434/pexels-photo-69434.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-  cat: 'https://images.pexels.com/photos/96938/pexels-photo-96938.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-
-}
-
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -38,22 +30,14 @@ class SignupForm extends React.Component{
   state = {
     username: '',
     password: '',
+    passwordConfirmation: '',
     firstName: '',
     lastName: ''
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log('hello')
     this.props.createUser(this.state)
-    // debugger
-    // this.setState({
-    //   username: '',
-    //   password: '',
-    //   firstName: '',
-    //   lastName: ''
-    // })
-    // dispatch SIGNUP_USER
   }
 
   handleChange = (event) => {
@@ -63,74 +47,114 @@ class SignupForm extends React.Component{
   }
 
   render(){
-    const mapInputs = null
     const { classes } = this.props;
+    const errorMessages = {
+      usernameDuplicate: 'Username has already been taken',
+      passwordLength: 'Password is too short (minimum is 8 characters)',
+      passwordConfirmation: "Password confirmation doesn't match Password"
+    }
+    const mapErrors = this.props.error ? this.props.error.map((e,i) => {
+      return(
+        <Typography key={i} color="error" >
+          {e.toLowerCase()}
+        </Typography>
+      )
+    }) : null
     return(
-      <form noValidate autoComplete="off" className={classes.container}>
-        <TextField
-          id="input-first-name"
-          name='firstName'
-          margin="normal"
-          variant="filled"
-          label='first name'
-          className={classes.textField}
-          onChange={this.handleChange}
-          required
-          value={this.state.firstName}>
-        </TextField>
-        <TextField
-          id="input-last-name"
-          name='lastName'
-          margin="normal"
-          variant="filled"
-          label='last name'
-          className={classes.textField}
-          onChange={this.handleChange}
-          required
-          value={this.state.lastName}>
-        </TextField>
-        <TextField
-          id="input-username"
-          name='username'
-          margin="normal"
-          variant="filled"
-          label='username'
-          className={classes.textField}
-          onChange={this.handleChange}
-          required
-          value={this.state.username}>
-        </TextField>
-        <TextField
-          id="input-password"
-          name='password'
-          margin="normal"
-          variant="filled"
-          label='password'
-          type="password"
-          className={classes.textField}
-          onChange={this.handleChange}
-          required
-          value={this.state.password}>
-        </TextField>
-
-        {/* // check if values in the inputs are empty */}
-        {Object.values(this.state).includes("") ?
-          <Button variant="outlined" disabled color="primary" className={classes.button}>
-            Submit
-          </Button> 
+      this.props.loggedIn ? 
+        <Redirect to="/" />
         :
-          <Button type="submit" onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
-            Submit
-          </Button> 
-        }
-      </form>
+        <form noValidate autoComplete="off" className={classes.container}>
+          {this.props.failedLogin ? 
+            mapErrors
+            :
+            null}
+          <TextField
+            id="input-first-name"
+            name='firstName'
+            margin="normal"
+            variant="filled"
+            label='first name'
+            className={classes.textField}
+            onChange={this.handleChange}
+            required
+            value={this.state.firstName}>
+          </TextField>
+          <TextField
+            id="input-last-name"
+            name='lastName'
+            margin="normal"
+            variant="filled"
+            label='last name'
+            className={classes.textField}
+            onChange={this.handleChange}
+            required
+            value={this.state.lastName}>
+          </TextField>
+          <TextField
+            id="input-username"
+            name='username'
+            margin="normal"
+            variant="filled"
+            label='username'
+            className={classes.textField}
+            onChange={this.handleChange}
+            required
+            error={this.props.error ? this.props.error.includes(errorMessages.usernameDuplicate) : false}
+            value={this.state.username}>
+          </TextField>
+          <TextField
+            id="input-password"
+            name='password'
+            margin="normal"
+            variant="filled"
+            label='password'
+            type="password"
+            className={classes.textField}
+            onChange={this.handleChange}
+            required
+            error={this.props.error ? this.props.error.includes(errorMessages.passwordConfirmation) || this.props.error.includes(errorMessages.passwordLength) : false}
+            value={this.state.password}>
+          </TextField>
+          <TextField
+            id="input-password-confirmation"
+            name='passwordConfirmation'
+            margin="normal"
+            variant="filled"
+            label='confirm password'
+            type="password"
+            className={classes.textField}
+            onChange={this.handleChange}
+            required
+            error={this.props.error ? this.props.error.includes(errorMessages.passwordConfirmation) : false}
+            value={this.state.passwordConfirmation}>
+          </TextField>
+
+          {/* // check if values in the inputs are empty */}
+          {Object.values(this.state).includes("") ?
+            <Button variant="outlined" disabled color="primary" className={classes.button}>
+              Submit
+            </Button> 
+          :
+            <Button type="submit" onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
+              Submit
+            </Button> 
+          }
+        </form>
     )
   }
 
 }
 
+// TODO refactor by deconstructing
 const mapStateToProps = state => {
-
+  console.log(state)
+  return {
+    authenticatingUser: state.user.authenticatingUser,
+    failedLogin: state.user.failedLogin,
+    error: state.user.error,
+    loggedIn: state.user.loggedIn
+  }
 }
 
 const mapDispatchToProps = dispatch => {
