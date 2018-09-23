@@ -18,6 +18,7 @@ export default function userReducer(state = initialUserState, action) {
     case 'AUTHENTICATED_USER':
       return { ...state, authenticatingUser: false }
     case 'FAILED_LOGIN':
+      // console.log('user reducer failed login', action)
       return {
         ...state,
         failedLogin: true,

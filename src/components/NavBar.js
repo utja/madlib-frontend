@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { Link } from 'react-router-dom'
+import LoginForm from './LoginForm'
+import MenuButton from './MenuButton'
 // import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,8 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-import MenuButton from './MenuButton'
-import { Link } from 'react-router-dom'
+import SignupForm from './SignupForm';
 
 const styles = {
   root: {
@@ -63,17 +65,6 @@ const userItems = [
 ]
 
 class NavBar extends React.Component {
-  state = {
-    anchorEl: null
-  };
-
-  handleMenu = event => {
-    this.setState({ anchorEl: event.target }, ()=> console.log(this.state));
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
   render(){
     const { loggedIn } = this.props
@@ -88,12 +79,17 @@ class NavBar extends React.Component {
           {/* render signup if not logged in */}
           { loggedIn ? 
             <Fragment>
-              <Button /* component={logout fn}*/> >Logout</Button>
+              <Button /* component={logout fn}*/>Logout</Button>
               <MenuButton items={userItems} iconType={AccountCircle} /> 
             </Fragment>
           : 
-              <Button color="inherit" component={Link} to="/signup">Signup</Button> 
-            }
+            <Fragment>
+              {/* <SignupForm /> */}
+              {/* <Button color="inherit" component={Link} to="/signup">Signup</Button>  */}
+              {/* <Button color="inherit" onClick={this.handleLoginOpen} component={LoginForm}>Login</Button>  */}
+              <LoginForm />
+            </Fragment>
+          }
           
         </Toolbar>
       </AppBar>
