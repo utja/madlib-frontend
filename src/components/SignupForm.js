@@ -148,7 +148,6 @@ class SignupForm extends React.Component{
 
 // TODO refactor by deconstructing
 const mapStateToProps = state => {
-  console.log(state)
   return {
     authenticatingUser: state.user.authenticatingUser,
     failedLogin: state.user.failedLogin,
