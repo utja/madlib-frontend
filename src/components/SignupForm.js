@@ -64,7 +64,7 @@ class SignupForm extends React.Component{
       this.props.loggedIn ? 
         <Redirect to="/" />
         :
-        <form noValidate autoComplete="off" className={classes.container}>
+        <form noValidate autoComplete="off" className={classes.container} onSubmit={this.handleSubmit}>
           {this.props.failedLogin ? 
             mapErrors
             :
@@ -136,7 +136,7 @@ class SignupForm extends React.Component{
               signup
             </Button> 
           :
-            <Button type="submit" onClick={this.handleSubmit} variant="contained" color="primary" className={classes.button}>
+            <Button type="submit" variant="contained" color="primary" className={classes.button}>
               signup
             </Button> 
           }
