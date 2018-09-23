@@ -71,6 +71,7 @@ class SignupForm extends React.Component{
             null}
           <TextField
             id="input-first-name"
+            autoFocus
             name='firstName'
             margin="normal"
             variant="filled"
