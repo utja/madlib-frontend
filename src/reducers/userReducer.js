@@ -6,22 +6,29 @@ const initialUserState = {
   loggedIn: false,
   authenticatingUser: false,
   failedLogin: false,
+  failedSignup: false,
   error: null
 }
 
 export default function userReducer(state = initialUserState, action) {
   switch(action.type) {
     case 'SET_CURRENT_USER':
-      return { ...state, user: action.payload, loggedIn: true, authenticatingUser: false }
+      return { ...initialUserState, user: action.payload, loggedIn: true }
     case 'AUTHENTICATING_USER':
       return { ...state, authenticatingUser: true }
     case 'AUTHENTICATED_USER':
       return { ...state, authenticatingUser: false }
     case 'FAILED_LOGIN':
-      // console.log('user reducer failed login', action)
       return {
         ...state,
         failedLogin: true,
+        error: action.payload.error,
+        authenticatingUser: false
+      }
+    case 'FAILED_SIGNUP':
+      return {
+        ...state,
+        failedSignup: true,
         error: action.payload.error,
         authenticatingUser: false
       }
