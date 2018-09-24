@@ -36,7 +36,6 @@ class LoginForm extends React.Component{
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state)
-    // this.props.createUser(this.state)
   }
 
   render(){
@@ -54,7 +53,7 @@ class LoginForm extends React.Component{
           <form onSubmit={this.handleSubmit} id="login-form" >
           {this.props.failedLogin ? 
             <Typography paragraph color="error" >
-              {this.props.error.toLowerCase()}
+              {this.props.error[0].toLowerCase()}
             </Typography>
             :
             null}
