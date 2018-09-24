@@ -87,7 +87,7 @@ class SignupForm extends React.Component{
         <DialogContent>
 
         <form id="signup-form" noValidate autoComplete="off" className={classes.container} onSubmit={this.handleSubmit}>
-          {this.props.failedLogin ? 
+          {this.props.failedSignup ? 
             mapErrors
             :
             null}
@@ -184,7 +184,7 @@ class SignupForm extends React.Component{
 const mapStateToProps = state => {
   return {
     authenticatingUser: state.user.authenticatingUser,
-    failedLogin: state.user.failedLogin,
+    failedSignup: state.user.failedSignup,
     error: state.user.error,
     loggedIn: state.user.loggedIn
   }
