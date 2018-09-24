@@ -29,7 +29,7 @@ export const createUser = userData => {
       localStorage.setItem('jwt', JSONResponse.jwt)
       dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
     })
-    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
+    .catch(response => response.json().then(error => dispatch({type: 'FAILED_SIGNUP', payload: error})))
   }
 }
 
