@@ -16,6 +16,7 @@ export const getTemplates = () => {
     })
     .then(JSONResponse => {
       dispatch({ type: 'SET_TEMPLATES', payload: JSONResponse })
+      dispatch({type: 'LOADED_STORIES'})
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
   }
@@ -39,6 +40,7 @@ export const getStories = () => {
     })
     .then(JSONResponse => {
       dispatch({ type: 'SET_STORIES', payload: JSONResponse })
+      dispatch({type: 'LOADED_STORIES'})
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
   }
@@ -66,14 +68,13 @@ export const postStory = (storyWords, selectedTemplateId, username, title) => {
       if (response.ok) {
         return response.json()
       } else {
-        console.log('response not okay in post story')
         throw response
       }
     })
     .then(JSONResponse => {
-      dispatch({ type: 'ADD_STORY', payload: JSONResponse })
+      dispatch({type: 'LOADED_STORIES'})
     })
-    .catch(response => response.json().then(error => dispatch({type: 'FAILED_SIGNUP', payload: error})))
+    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_STORIES', payload: error})))
   }
 }
 
