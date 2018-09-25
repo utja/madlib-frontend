@@ -9,6 +9,7 @@ import SignupForm from './components/SignupForm'
 import StoriesContainer from './containers/StoriesContainer'
 import NewStoryContainer from './containers/NewStoryContainer'
 import './assets/css/App.css';
+import NewDrawingContainer from './containers/NewDrawingContainer';
 
 const theme = createMuiTheme({
   palette: {
@@ -44,6 +45,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/stories" component={StoriesContainer} />
           <Route exact path="/stories/new" component={NewStoryContainer} />
+          <Route exact path="/drawings/new" component={NewDrawingContainer} />
         </Switch>
       </div>
       </MuiThemeProvider>
