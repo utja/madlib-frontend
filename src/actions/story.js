@@ -71,8 +71,7 @@ export const postStory = (storyWords, selectedTemplateId, username, title) => {
       }
     })
     .then(JSONResponse => {
-      dispatch({ type: 'ADD_STORY', payload: JSONResponse.story })
-      // dipatch({type: 'LOADED_STORY'})
+      dispatch({ type: 'ADD_STORY', payload: JSONResponse })
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_SIGNUP', payload: error})))
   }
