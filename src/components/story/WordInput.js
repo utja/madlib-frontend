@@ -11,21 +11,20 @@ const styles = theme => ({
 
 const WordInput = props => {
 
-  // console.log('wordinput props are', props)
-  const { classes, storyWord, handleChange } = props;
+  const { classes, word, handleChange } = props;
 
   return(
     <TextField
       id="outlined-helperText"
-      name={storyWord.name}
+      name={word.key}
       margin="normal"
       variant="outlined"
-      label={storyWord.category}
-      helperText={'e.g. ' + storyWord.examples}
+      label={word.type}
+      helperText={word.helper_text}
       className={classes.textField}
       onChange={handleChange}
       required
-
+      placeholder={`e.g. ` + word.examples}
       // ***************************************************************************************************************************
       // react does not like that the value is coming in as props and not set to the local state?
       // the form state comes down as props

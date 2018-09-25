@@ -53,6 +53,7 @@ class LoginForm extends React.Component{
           <form onSubmit={this.handleSubmit} id="login-form" >
           {this.props.failedLogin ? 
             <Typography paragraph color="error" >
+              {/* one error comes back as an aray from server - for signup form there are multiple errors in an array */}
               {this.props.error[0].toLowerCase()}
             </Typography>
             :

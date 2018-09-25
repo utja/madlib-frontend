@@ -9,7 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import PaletteIcon from '@material-ui/icons/Palette'
 
 const Story = props => {
-  console.log('story props', props)
+  console.log(props)
   return(
     // without material ui
     // <div className="story">
@@ -25,7 +25,7 @@ const Story = props => {
               {props.story.title}
             </Typography>
             <Typography align="left" gutterBottom variant="subheading" component="h1">
-              {props.story.user}
+              {props.story.user.username}
             </Typography>
             <Typography align="left" component="p">
               {props.story.story}
