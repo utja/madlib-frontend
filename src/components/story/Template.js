@@ -70,7 +70,7 @@ class Template extends React.Component {
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value.toLowerCase()
-    },()=> console.log(this.state))
+    })
   }
 
   handleSubmit = (event) => {
@@ -99,6 +99,7 @@ class Template extends React.Component {
             onChange={this.handleChange}
             fullWidth
             required
+            autoFocus
             // ***************************************************************************************************************************
             // react does not like that the value is coming in as props and not set to the local state?
             // the form state comes down as props
