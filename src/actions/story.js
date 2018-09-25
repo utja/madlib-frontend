@@ -72,7 +72,7 @@ export const postStory = (storyWords, selectedTemplateId, username, title) => {
       }
     })
     .then(JSONResponse => {
-      dispatch({type: 'LOADED_STORIES'})
+      dispatch({type: 'SET_STORY', payload: JSONResponse})
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_STORIES', payload: error})))
   }
