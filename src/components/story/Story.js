@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import CardActions from '@material-ui/core/CardActions';
 import PaletteIcon from '@material-ui/icons/Palette'
+import { Link } from 'react-router-dom'
 
 const Story = props => {
   console.log(props)
@@ -31,11 +32,11 @@ const Story = props => {
               {props.story.story}
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small" color="primary" variant="contained">
+          {/* <CardActions>
+            <Button component={Link} to="/drawings/new" size="small" color="primary" variant="contained">
               Create Drawing <PaletteIcon/>
             </Button>
-          </CardActions>
+          </CardActions> */}
         </Card>
       </Grid>
 
