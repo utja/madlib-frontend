@@ -7,6 +7,7 @@ import TemplatesList from '../components/story/TemplatesList'
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import { getTemplates } from '../actions/story'
+import withAuth from '../hocs/withAuth'
 
 const styles = theme => ({
   container: {
@@ -79,6 +80,7 @@ const mapDispatchToProps = dispatch => {
 
 export default compose(
   withStyles(styles),
+  withAuth,
   connect(mapStateToProps, mapDispatchToProps)
   )(NewStoryContainer)
 

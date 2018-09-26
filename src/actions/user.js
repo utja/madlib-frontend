@@ -65,17 +65,17 @@ export const loginUser = userData => {
   }
 }
 
-// export const fetchCurrentUser = () => {
-//   // takes the token in localStorage and finds out who it belongs to
-//   return (dispatch) => {
-//     dispatch(authenticatingUser()) //tells the app we are fetching
-//     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/profile`, {
-//       method: 'GET',
-//       headers: {
-//         Authorization: `Bearer ${localStorage.getItem('jwt')}`
-//       }
-//     })
-//       .then(response => response.json())
-//       .then((JSONResponse) => dispatch(setCurrentUser(JSONResponse.user)))
-//   }
-// }
+export const fetchCurrentUser = () => {
+  // takes the token in localStorage and finds out who it belongs to
+  return (dispatch) => {
+    dispatch({type: 'AUTHENTICATING_USER'}) //tells the app we are fetching
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/profile`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+      .then(response => response.json())
+      .then(JSONResponse => dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse.user}))
+  }
+}

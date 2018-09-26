@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import * as actions from '../actions'
-import { Loader } from 'semantic-ui-react'
+import { fetchCurrentUser } from '../actions/user'
 
 const withAuth = /*FUNCTION*/ (WrappedComponent) => {
   class AuthorizedComponent extends React.Component {
@@ -19,24 +18,24 @@ const withAuth = /*FUNCTION*/ (WrappedComponent) => {
         return <WrappedComponent />
       } else if (localStorage.getItem('jwt') && this.props.authenticatingUser) {
         //we're currently fetching, show a loading spinner
-        return <Loader active inline="centered" />
+        return <div>LOADING</div>
       } else {
         //user is not AUTHORIZED to see this component
-        return <Redirect to="/login" />
+        return <Redirect to="/" />
       }
     }
   }
 
-  const mapStateToProps = /*FUNCTION*/ (reduxStoreState) => {
+  const mapStateToProps = /*FUNCTION*/ (state) => {
     return {
-      loggedIn: reduxStoreState.usersReducer.loggedIn,
-      authenticatingUser: reduxStoreState.usersReducer.authenticatingUser
+      loggedIn: state.user.loggedIn,
+      authenticatingUser: state.user.authenticatingUser
     }
   }
 
   const mapDispatchToProps = /*FUNCTION*/ (dispatch) => {
     return {
-      fetchCurrentUser: () => dispatch(actions.fetchCurrentUser()), //dispatch is automagically provided by redux
+      fetchCurrentUser: () => dispatch(fetchCurrentUser()), //dispatch is automagically provided by redux
     }
   }
 
@@ -46,7 +45,7 @@ const withAuth = /*FUNCTION*/ (WrappedComponent) => {
 
   return connect(
     mapStateToProps,
-    actions
+    mapDispatchToProps
   )(AuthorizedComponent)
 }
 
