@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import { withRouter, Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router-dom'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -36,9 +37,11 @@ class LoginForm extends React.Component{
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state)
+    this.props.history.push(this.props.location.pathname);
   }
 
   render(){
+    console.log(this.props)
     return(
       <div className="login-form">
         <Button onClick={this.handleOpen}>Login</Button>
@@ -108,4 +111,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))

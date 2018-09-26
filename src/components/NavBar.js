@@ -13,6 +13,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import SignupForm from './SignupForm';
+import { withRouter } from 'react-router-dom'
+
 
 const styles = {
   root: {
@@ -71,6 +73,12 @@ const userItems = [
 
 class NavBar extends React.Component {
 
+  handleLogout = () => {
+    localStorage.removeItem('jwt')
+    this.props.dispatch({type: 'LOGOUT'})
+    this.props.history.push("/")
+  }
+
   render(){
     const { loggedIn } = this.props
     const { classes } = this.props;
@@ -84,13 +92,13 @@ class NavBar extends React.Component {
           {/* render signup if not logged in */}
           { loggedIn ? 
             <Fragment>
-              <Button /* component={logout fn}*/>Logout</Button>
+              <Button onClick={this.handleLogout}/* component={logout fn}*/>Logout</Button>
               <MenuButton items={userItems} iconType={AccountCircle} /> 
             </Fragment>
           : 
             <Fragment>
               <SignupForm />
-              <LoginForm />
+              {!loggedIn && this.props.location.pathname === "/login" ? null : <LoginForm /> }
             </Fragment>
           }
           
@@ -110,5 +118,6 @@ const mapStateToProps = state => {
 
 export default compose(
   withStyles(styles),
+  withRouter,
   connect(mapStateToProps)
   )(NavBar);

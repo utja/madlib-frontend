@@ -25,6 +25,8 @@ export default function userReducer(state = initialUserState, action) {
         error: action.payload.error,
         authenticatingUser: false
       }
+    case 'LOGOUT':
+      return initialUserState
     case 'FAILED_SIGNUP':
       return {
         ...state,

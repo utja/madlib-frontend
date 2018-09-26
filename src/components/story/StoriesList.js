@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 
 
 const StoriesList = props => {
-  console.log('stories list props', props)
+  // console.log('stories list props', props)
   const mapStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
 
   return(

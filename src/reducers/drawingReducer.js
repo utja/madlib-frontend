@@ -21,6 +21,8 @@ export default function drawingReducer(state = initialDrawingState, action) {
         return { ...state, selectedDrawing: action.payload };
     case 'FAILED_LOADING_DRAWINGS':
         return { ...state, failedLoading: true, error: action.payload };
+    case 'LOGOUT':
+      return initialDrawingState
     default:
         return state;
   }

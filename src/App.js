@@ -5,7 +5,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
-import LoginForm from './components/LoginForm'
+import Login from './components/Login'
 import SignupForm from './components/SignupForm'
 import StoriesContainer from './containers/StoriesContainer'
 import DrawingsContainer from './containers/DrawingsContainer'
@@ -43,7 +43,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/stories" component={StoriesContainer} />
           <Route exact path="/stories/new" component={NewStoryContainer} />

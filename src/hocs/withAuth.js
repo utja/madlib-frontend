@@ -21,7 +21,7 @@ const withAuth = /*FUNCTION*/ (WrappedComponent) => {
         return <div>LOADING</div>
       } else {
         //user is not AUTHORIZED to see this component
-        return <Redirect to="/" />
+        return <Redirect to="/login" />
       }
     }
   }

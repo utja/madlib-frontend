@@ -59,6 +59,8 @@ export default function storyReducer(state = initialStoryState, action) {
       return {...state, selectedTemplate: null };
     case 'SET_TEMPLATES':
       return { ...state, templates: action.payload}
+    case 'LOGOUT':
+      return initialStoryState
     default:
       return state;
   }

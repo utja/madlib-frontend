@@ -31,7 +31,7 @@ class StoriesContainer extends React.Component{
   }
 
   render(){
-    console.log('stories container props', this.props)
+    // console.log('stories container props', this.props)
     return(
         // without material ui
         // <div className="stories-container">
