@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import withAuth from '../hocs/withAuth'
 import { fetchCurrentUser } from '../actions/user'
+import Loading from './Loading'
 
 class Home extends React.Component {
 
@@ -13,7 +14,7 @@ class Home extends React.Component {
 
   render(){
     return(
-      localStorage.getItem('jwt') && this.props.authenticatingUser ? <div>Loading</div> : <div>Home</div>
+      localStorage.getItem('jwt') && this.props.authenticatingUser ? <Loading/> : <div>Home</div>
     )
   }
 }

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { loginUser } from '../actions/user'
-
+import Loading from './Loading'
 
 class Login extends React.Component {
   constructor(props){
@@ -40,7 +40,7 @@ class Login extends React.Component {
         </div>
       )
     } else if (this.props.authenticatingUser) {
-      return <div>LOADING</div>
+      return <Loading/>
     } else {
       return (
         <div>
