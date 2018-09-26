@@ -6,9 +6,8 @@ class DrawingCard extends React.Component {
 
   componentDidMount(){
     const myCanvas = document.getElementById(`drawing-${this.props.drawing.id}`);
-    console.log(myCanvas)
     const ctx = myCanvas.getContext('2d');
-    const img = new Image;
+    const img = new Image();
     img.onload = function(){
       ctx.drawImage(img,0,0); // Or at whatever offset you like
     };
@@ -17,10 +16,9 @@ class DrawingCard extends React.Component {
 
   componentDidUpdate(){
     const myCanvas = document.getElementById(`drawing-${this.props.drawing.id}`);
-    console.log(myCanvas)
     const ctx = myCanvas.getContext('2d');
     ctx.clearRect(0,0,400,400)
-    const img = new Image;
+    const img = new Image();
     img.onload = function(){
       ctx.drawImage(img,0,0); // Or at whatever offset you like
     };
@@ -28,7 +26,6 @@ class DrawingCard extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     
     return(
       <div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { compose } from 'redux'
+// import { compose } from 'redux'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+// import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import LoginForm from './components/LoginForm'

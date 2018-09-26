@@ -64,3 +64,18 @@ export const loginUser = userData => {
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
   }
 }
+
+// export const fetchCurrentUser = () => {
+//   // takes the token in localStorage and finds out who it belongs to
+//   return (dispatch) => {
+//     dispatch(authenticatingUser()) //tells the app we are fetching
+//     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/profile`, {
+//       method: 'GET',
+//       headers: {
+//         Authorization: `Bearer ${localStorage.getItem('jwt')}`
+//       }
+//     })
+//       .then(response => response.json())
+//       .then((JSONResponse) => dispatch(setCurrentUser(JSONResponse.user)))
+//   }
+// }

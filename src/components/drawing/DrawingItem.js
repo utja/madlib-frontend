@@ -11,7 +11,7 @@ const DrawingItem = props => {
   const handleClick = (event) => {
     props.selectDrawing(props.drawing)
   }
-  console.log('drawing item props', props)
+  // console.log('drawing item props', props)
   const { drawing: { title, user: { username }} } = props
   return(
     <Fragment>

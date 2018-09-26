@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 // import StoryItem from './StoryItem'
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';

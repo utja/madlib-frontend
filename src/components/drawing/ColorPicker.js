@@ -1,6 +1,6 @@
 import React from 'react'
 import { CompactPicker } from 'react-color'
-import { withStyles } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 
 class ColorPicker extends React.Component {

@@ -32,7 +32,6 @@ const initialStoryState = {
   stories: [],
   selectedStory: null,
   loadingStories: false,
-  selectedStory: null,
   templates: [],
   failedLoading: false,
   error: null

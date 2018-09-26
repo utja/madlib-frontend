@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import DrawingsList from '../components/drawing/DrawingsList'
-import Story from '../components/story/Story'
+// import Story from '../components/story/Story'
 import { getDrawings } from '../actions/drawing'
 import DrawingCard from '../components/drawing/DrawingCard'
 
 // import InteractiveList from '../MaterialList'
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button'
-import CardActions from '@material-ui/core/CardActions';
-import Card from '@material-ui/core/Card';
-import PaletteIcon from '@material-ui/icons/Palette'
-import { Link } from 'react-router-dom'
+// import Button from '@material-ui/core/Button'
+// import CardActions from '@material-ui/core/CardActions';
+// import Card from '@material-ui/core/Card';
+// import PaletteIcon from '@material-ui/icons/Palette'
+// import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
 
 
