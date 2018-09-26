@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 
 const StoriesList = props => {
   console.log('stories list props', props)
-  const renderStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
+  const mapStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
 
   return(
     // without material ui
@@ -16,7 +16,7 @@ const StoriesList = props => {
 
     <Grid item >
       <List>
-        {renderStoryItems}
+        {mapStoryItems}
       </List>
     </Grid>
   )
