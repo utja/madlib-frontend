@@ -2,12 +2,12 @@ import React, { Fragment } from 'react'
 import { fabric } from 'fabric'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import ColorPicker from './ColorPicker'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -46,7 +46,7 @@ class Canvas extends React.Component {
     this.canvas = canvas
 
     this.canvas.freeDrawingBrush = new fabric[this.state.value + 'Brush'](this.canvas);
-
+    
     this.canvas.freeDrawingBrush.color = this.state.brushColor;
     this.canvas.freeDrawingBrush.width = this.state.brushWidth;
     this.canvas.freeDrawingBrush.shadow = new fabric.Shadow({
@@ -58,36 +58,7 @@ class Canvas extends React.Component {
     });
   }
 
-
-  handleClear = (canvas) => {
-    canvas.clear()
-  }
-
-  handleSubmit = (event, canvas) => {
-    event.preventDefault()
-    const dataUrl = canvas.lowerCanvasEl.toDataURL()
-  }
-
-  handleChange = event => {
-    this.setState({ [event.target.name] : event.target.value }, () => console.log(this.state));
-  };
   
-  handleBrushSlide = (event, value) => {
-    this.setState({brushWidth: value})
-  }
-
-  handleShadowWidthSlide = (event, value) => {
-    this.setState({shadowWidth: value})
-  }
-
-  handleShadowOffsetXSlide = (event, value) => {
-    this.setState({shadowOffsetX: value})
-  }
-
-  handleShadowOffsetYSlide = (event, value) => {
-    this.setState({shadowOffsetY: value})
-  }
-
   componentDidUpdate(){
     this.canvas.freeDrawingBrush = new fabric[this.state.value + 'Brush'](this.canvas);
 
@@ -103,6 +74,46 @@ class Canvas extends React.Component {
       });
     }
   }
+
+  handleClear = (canvas) => {
+    canvas.clear()
+  }
+
+  handleSubmit = (event, canvas) => {
+    event.preventDefault()
+    const dataURL = canvas.lowerCanvasEl.toDataURL()
+    console.log(dataURL)
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name] : event.target.value }, () => console.log(this.state));
+  };
+  
+  handleBrushSlide = (event, value) => {
+    this.setState({brushWidth: value})
+  }
+
+  handleBrushColor = (color, event) => {
+    this.setState({brushColor: color.hex})
+  }
+
+  handleShadowWidthSlide = (event, value) => {
+    this.setState({shadowWidth: value})
+  }
+
+  handleShadowColor = (color, event) => {
+    this.setState({shadowColor: color.hex})
+  }
+
+  handleShadowOffsetXSlide = (event, value) => {
+    this.setState({shadowOffsetX: value})
+  }
+
+  handleShadowOffsetYSlide = (event, value) => {
+    this.setState({shadowOffsetY: value})
+  }
+
+
 
   render(){
     const { classes } = this.props
@@ -132,23 +143,24 @@ class Canvas extends React.Component {
                   labelPlacement="end"
                 />
               </RadioGroup>
+              <ColorPicker label={'Pick Brush Color'}color={this.state.brushColor} handleColor={this.handleBrushColor} />
               <Typography  id="brush-width">Brush Width: {this.state.brushWidth}</Typography>
               <Slider min={1} max={100} name="brushWidth" value={this.state.brushWidth} aria-labelledby="brush-width" onChange={this.handleBrushSlide} />
               <Typography id="shadow-width">Shadow Width: {this.state.shadowWidth}</Typography>
               <Slider min={1} max={100} name="shadowWidth" value={this.state.shadowWidth} aria-labelledby="shadow-width" onChange={this.handleShadowWidthSlide} />
+              <ColorPicker label={'Pick Shadow Color'} color={this.state.shadowColor} handleColor={this.handleShadowColor} />
               <Typography id="shadow-offset-x">Shadow Offset X: {this.state.shadowOffsetX}</Typography>
               <Slider min={-50} max={50} name="shadowOffsetX" value={this.state.shadowOffsetX} aria-labelledby="shadow-offset-x" onChange={this.handleShadowOffsetXSlide} />
               <Typography id="shadow-offset-y">Shadow Offset Y: {this.state.shadowOffsetY}</Typography>
               <Slider min={-50} max={50} name="shadowOffsetY" value={this.state.shadowOffsetY} aria-labelledby="shadow-offset-y" onChange={this.handleShadowOffsetYSlide} />
-            <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
-                  Clear
-            </Button>
+              <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
+                    Clear
+              </Button>
             </FormControl>
           </Grid>
         </Fragment>
       )
   }
-
 }
 
 // export default compose(
