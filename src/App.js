@@ -6,6 +6,8 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Login from './components/Login'
+import Profile from './components/Profile'
+import NotFound from './components/NotFound'
 import SignupForm from './components/SignupForm'
 import StoriesContainer from './containers/StoriesContainer'
 import DrawingsContainer from './containers/DrawingsContainer'
@@ -31,6 +33,7 @@ const theme = createMuiTheme({
   },
 });
 
+// change to functional component
 class App extends Component {
   render() {
     return (
@@ -49,6 +52,8 @@ class App extends Component {
           <Route exact path="/stories/new" component={NewStoryContainer} />
           <Route exact path="/drawings/new" component={NewDrawingContainer} />
           <Route exact path="/drawings" component={DrawingsContainer} />
+          <Route exact path="/profile" component={Profile} />
+          <Route component={NotFound} />
         </Switch>
       </div>
       </MuiThemeProvider>
