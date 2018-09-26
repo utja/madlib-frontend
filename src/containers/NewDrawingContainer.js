@@ -7,7 +7,7 @@ class NewDrawingContainer extends React.Component {
   render(){
     return(
       <Grid container className="new-drawing-container">
-        {/* <Story/> */}
+        <Story/>
         <Canvas />
       </Grid>
     )

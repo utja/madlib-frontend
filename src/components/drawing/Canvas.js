@@ -3,6 +3,7 @@ import { fabric } from 'fabric'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import ColorPicker from './ColorPicker'
+import { postDrawing } from '../../actions/drawing'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +14,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/lab/Slider';
+import TextField from '@material-ui/core/TextField';
+import { withRouter } from 'react-router-dom'
 
 const styles = {
   button: {
@@ -31,7 +34,8 @@ class Canvas extends React.Component {
       shadowColor: '#000000',
       shadowWidth: 0,
       shadowOffsetX: 0,
-      shadowOffsetY: 0
+      shadowOffsetY: 0,
+      title: ''
     }
     this.canvas = new fabric.Canvas('c', {
       isDrawingMode: true
@@ -82,11 +86,13 @@ class Canvas extends React.Component {
   handleSubmit = (event, canvas) => {
     event.preventDefault()
     const dataURL = canvas.lowerCanvasEl.toDataURL()
-    console.log(dataURL)
+    // this.props.postDrawing: (dataURL, storyID, userID, title)
+    this.props.postDrawing(dataURL, this.props.selectedStory.id, this.props.user.id, this.state.title)
+    this.props.history.push('/drawings')
   }
 
   handleChange = event => {
-    this.setState({ [event.target.name] : event.target.value }, () => console.log(this.state));
+    this.setState({ [event.target.name] : event.target.value });
   };
   
   handleBrushSlide = (event, value) => {
@@ -117,11 +123,21 @@ class Canvas extends React.Component {
 
   render(){
     const { classes } = this.props
+    console.log(this.props)
       return(
         <Fragment>
           <Grid item className="canvas">
               <canvas id="c" width="400" height="400">                    
               </canvas>
+              <TextField
+                id="outlined-helperText"
+                name="title"
+                margin="normal"
+                variant="outlined"
+                label="title"
+                className={classes.textField}
+                onChange={this.handleChange}
+                required />
               <Button onClick={(event) => this.handleSubmit(event, this.canvas)} className={this.props.classes.button} size="small" color="primary" variant="contained">
                 Submit
               </Button>
@@ -163,11 +179,24 @@ class Canvas extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    selectedStory: state.stories.selectedStory,
+    user: state.user.user
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    postDrawing: (dataURL, storyID, userID, title) => dispatch(postDrawing(dataURL, storyID, userID, title))
+  }
+}
+
 // export default compose(
 //   withStyles(styles),
 //   connect(mapStateToProps, mapDispatchToProps)
 //   )(Canvas)
 export default compose(
   withStyles(styles),
-  connect(null)
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
   )(Canvas)

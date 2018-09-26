@@ -39,6 +39,11 @@ const menuItems = [
     link: "/stories"
   },
   {
+    id: "drawings",
+    name: "View Drawings",
+    link: "/drawings"
+  },
+  {
     id: "newStory",
     name: "Create a New Story",
     link: "/stories/new"

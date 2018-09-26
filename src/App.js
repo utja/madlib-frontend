@@ -7,6 +7,7 @@ import Home from './components/Home'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import StoriesContainer from './containers/StoriesContainer'
+import DrawingsContainer from './containers/DrawingsContainer'
 import NewStoryContainer from './containers/NewStoryContainer'
 import './assets/css/App.css';
 import NewDrawingContainer from './containers/NewDrawingContainer';
@@ -46,6 +47,7 @@ class App extends Component {
           <Route exact path="/stories" component={StoriesContainer} />
           <Route exact path="/stories/new" component={NewStoryContainer} />
           <Route exact path="/drawings/new" component={NewDrawingContainer} />
+          <Route exact path="/drawings" component={DrawingsContainer} />
         </Switch>
       </div>
       </MuiThemeProvider>

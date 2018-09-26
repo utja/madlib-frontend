@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import StoriesList from '../components/story/StoriesList'
+import DrawingsList from '../components/drawing/DrawingsList'
 import Story from '../components/story/Story'
-import { getStories } from '../actions/story'
+import { getDrawings } from '../actions/drawing'
+import DrawingCard from '../components/drawing/DrawingCard'
+
 // import InteractiveList from '../MaterialList'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
@@ -24,14 +26,14 @@ const styles = {
     marginRight: 'auto',
   }
 }
-class StoriesContainer extends React.Component{
+class DrawingsContainer extends React.Component{
 
   componentDidMount(){
-    this.props.getStories()
+    this.props.getDrawings()
   }
 
   render(){
-    console.log('stories container props', this.props)
+    // console.log('drawings container props', this.props)
     return(
         // without material ui
         // <div className="stories-container">
@@ -39,28 +41,9 @@ class StoriesContainer extends React.Component{
         //   {props.stories.selectedStory ? <Story /> : null}
         //   {/* <InteractiveList /> */}
         // </div>
-      <Grid className="stories-container" container justify="space-around">
-        <StoriesList stories={this.props.stories}/>
-        <Grid item xs={6}>
-
-        {this.props.selectedStory ? 
-        <Fragment>
-        <Story />
-        <Grid item xs={6}>
-
-        {/* <Card >
-          <CardActions> */}
-            <Button className={this.props.classes.button} component={Link} to="/drawings/new" size="small" color="primary" variant="contained">
-              Create Drawing <PaletteIcon/>
-            </Button>
-          {/* </CardActions>
-        </Card> */}
-        </Grid>
-        </Fragment>
-        : null}
-        {/* <InteractiveList /> */}
-        
-        </Grid>
+      <Grid className="drawings-container" container justify="space-around">
+        <DrawingsList drawings={this.props.drawings}/>
+        {this.props.selectedDrawing ? <DrawingCard/> : null}
       </Grid>
     )
   }
@@ -69,18 +52,18 @@ class StoriesContainer extends React.Component{
 // reducer state key = stories
 const mapStateToProps = state => {
   return {
-    stories: state.stories.stories,
-    selectedStory: state.stories.selectedStory
+    drawings: state.drawings.drawings,
+    selectedDrawing: state.drawings.selectedDrawing
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getStories: () => dispatch(getStories())
+    getDrawings: () => dispatch(getDrawings())
   }
 }
 
 export default compose(
   withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps)
-  )(StoriesContainer)
+  )(DrawingsContainer)
