@@ -63,12 +63,6 @@ const userItems = [
     name: "Account Settings",
     link: "/settings"
   },
-  // make sure that logout button logs out
-  {
-    id: "logout",
-    name: "Logout",
-    link: "/logout"
-  }
 ]
 
 class NavBar extends React.Component {
