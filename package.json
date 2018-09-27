@@ -16,7 +16,8 @@
     "react-scripts": "1.1.5",
     "react-slick": "^0.23.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
