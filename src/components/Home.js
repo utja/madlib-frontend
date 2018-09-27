@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import withAuth from '../hocs/withAuth'
 import { fetchCurrentUser } from '../actions/user'
 import Loading from './Loading'
 
