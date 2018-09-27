@@ -76,6 +76,7 @@ class NavBar extends React.Component {
   render(){
     const { loggedIn } = this.props
     const { classes } = this.props;
+    console.log('navbar props',this.props)
     return(
       <AppBar position="static">
         <Toolbar>
@@ -106,7 +107,8 @@ class NavBar extends React.Component {
 // refactor/destructure
 const mapStateToProps = state => {
   return {
-    loggedIn: state.user.loggedIn
+    loggedIn: state.user.loggedIn,
+    user: state.user.user
   }
 }
 
