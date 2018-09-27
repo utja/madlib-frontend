@@ -1,6 +1,5 @@
 import React from 'react'
 import { CompactPicker } from 'react-color'
-// import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 
 class ColorPicker extends React.Component {
@@ -15,6 +14,11 @@ class ColorPicker extends React.Component {
   handleClose = () => {
     this.setState({ displayColorPicker: false })
   };
+
+  handleChange = (color, event) => {
+    this.props.handleColor(color, event)
+    this.handleClose()
+  }
 
   render() {
     const popover = {
@@ -75,11 +79,10 @@ class ColorPicker extends React.Component {
 
     return (
       <div style={styles.div}>
-        <Button style={styles.button} variant="contained" onClick={ this.handleClick }>{this.props.label}</Button>
+        <Button size="small" style={styles.button} variant="contained" onClick={ this.handleClick }>{this.props.label}</Button>
         { this.state.displayColorPicker ? <div style={ popover }>
           <div style={ cover } onClick={ this.handleClose }/>
-          {/* <ChromePicker onChangeComplete={this.props.handleBrushColor}/> */}
-          <CompactPicker color={this.props.color} onChangeComplete={this.props.handleColor}/>
+          <CompactPicker color={this.props.color} onChange={this.handleChange}/>
         </div> : null }
       </div>
     )
