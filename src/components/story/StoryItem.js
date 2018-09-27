@@ -1,9 +1,9 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 
 const StoryItem = props => {
   // console.log('story item props', props)
@@ -13,19 +13,15 @@ const StoryItem = props => {
   }
   const { story: { title, user: { username }} } = props
   return(
-    <Fragment>
-      <ListItem>
-        <ListItemText 
-          primary={title}
-          secondary={username}>
-        </ListItemText>
+    <Grid item>
+      <ListItem divider >
+        <ListItemText primary={title} secondary={username} />
         <Button onClick={handleClick} variant="outlined" color="primary">
           View Story
         </Button>
-        </ListItem>
-        <Divider />
-    </Fragment>
-
+      </ListItem>
+      {/* <Divider /> */}
+    </Grid>
   )
 }
 
