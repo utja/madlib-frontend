@@ -50,6 +50,7 @@ export const postDrawing = (dataURL, storyID, userID, title) => {
     .then(JSONResponse => {
       dispatch({type: 'SET_DRAWING', payload: JSONResponse})
       dispatch({type: 'LOADED_DRAWINGS'})
+      dispatch(getDrawings())
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_DRAWINGS', payload: error})))
   }
