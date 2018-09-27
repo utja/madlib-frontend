@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button'
 import PaletteIcon from '@material-ui/icons/Palette'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
-
+import withAuth from '../hocs/withAuth'
 
 // storiesContainer will render when user goes to /stories to see all stories
 // this page will have a storyList component that will display story items (based on ratings or by newest?)
@@ -72,6 +72,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default compose(
+  withAuth,
   withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps)
   )(StoriesContainer)

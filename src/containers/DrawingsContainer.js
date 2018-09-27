@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import DrawingsList from '../components/drawing/DrawingsList'
-// import Story from '../components/story/Story'
+import withAuth from '../hocs/withAuth'
 import { getDrawings } from '../actions/drawing'
 import DrawingCard from '../components/drawing/DrawingCard'
 
@@ -64,6 +64,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default compose(
+  withAuth,
   withStyles(styles),
   connect(mapStateToProps, mapDispatchToProps)
   )(DrawingsContainer)
