@@ -25,13 +25,14 @@ class MenuButton extends React.Component {
   render() {
     // const { classes } = this.props;
     // const { auth, anchorEl } = this.state;
+    const { styling } = this.props
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const Wrapper = this.props.iconType;
     const listItems = this.props.items.map(item =>
       <MenuItem key={item.id} component={Link} to={item.link} onClick={this.handleClose}>{item.name}</MenuItem>
     );
-
+    console.log(this.props)
     return (
       <div>
         <IconButton
@@ -39,6 +40,7 @@ class MenuButton extends React.Component {
           aria-haspopup="true"
           onClick={this.handleMenu}
           color="inherit"
+          style={styling}
         >
           {<Wrapper />}
         </IconButton>

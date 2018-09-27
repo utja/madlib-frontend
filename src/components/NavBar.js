@@ -1,20 +1,12 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-// import { Link } from 'react-router-dom'
 import LoginForm from './LoginForm'
 import MenuButton from './MenuButton'
-// import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Button from '@material-ui/core/Button';
-import SignupForm from './SignupForm';
 import { withRouter } from 'react-router-dom'
-
+import { AppBar, Avatar, Button, Toolbar, Typography, withStyles } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu';
+import SignupForm from './SignupForm';
 
 const styles = {
   root: {
@@ -25,7 +17,12 @@ const styles = {
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 100,
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    margin: 0,
   },
 };
 
@@ -65,6 +62,8 @@ const userItems = [
   },
 ]
 
+
+
 class NavBar extends React.Component {
 
   handleLogout = () => {
@@ -72,11 +71,18 @@ class NavBar extends React.Component {
     this.props.dispatch({type: 'LOGOUT'})
     this.props.history.push("/")
   }
+  
+  // userAvatar = () => {
+  //   return (
+  //     <Avatar src={this.props.user.avatar} />
+  //   )
+  // }
 
   render(){
     const { loggedIn } = this.props
     const { classes } = this.props;
-    console.log('navbar props',this.props)
+    const userAvatar = () => <Avatar src={this.props.user.avatar} className={classes.avatar} />
+    const avatarPadding = {padding: 7}
     return(
       <AppBar position="static">
         <Toolbar>
@@ -88,7 +94,8 @@ class NavBar extends React.Component {
           { loggedIn ? 
             <Fragment>
               <Button onClick={this.handleLogout}/* component={logout fn}*/>Logout</Button>
-              <MenuButton items={userItems} iconType={AccountCircle} /> 
+              
+              <MenuButton items={userItems} styling={avatarPadding} iconType={userAvatar} ></MenuButton> 
             </Fragment>
           : 
             <Fragment>
