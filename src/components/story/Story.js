@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const Story = props => {
   return(
-    <Grid item >
+    <Grid item xs>
       <Card>
         <CardContent>
           <Typography align="left" variant="headline" component="h1">

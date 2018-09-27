@@ -37,8 +37,10 @@ class StoriesContainer extends React.Component{
       <Grid className={classes.container} container justify="space-around">    
         <StoriesList stories={this.props.stories}/>
         {this.props.selectedStory ? 
-          <Grid container item xs direction="column" alignItems="center" spacing={24}>
-            <Story />
+          <Grid container item xs direction="column" justify="flex-start" alignItems="center" spacing={24}>
+            <Grid item>
+              <Story />
+            </Grid>
             <Grid item>
               <Button className={this.props.classes.button} component={Link} to="/drawings/new" size="large" color="primary" variant="contained">
                 Create Drawing <PaletteIcon/>
