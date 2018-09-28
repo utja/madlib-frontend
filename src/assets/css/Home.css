@@ -1,0 +1,24 @@
+.slick-dots li button:before
+{
+  font-family: 'slick';
+  font-size: 15px;
+  line-height: 20px;
+  color: MediumAquamarine ;
+}
+
+.slick-slide, .slick-slide *{ outline: none !important; }
+
+.slick-dots li.slick-active button:before
+{
+  color: MediumAquamarine;
+}
+
+.home-page-one
+{
+  background-image: url(../images/home-one.jpg);
+  background-size: cover;
+  height: 500px;
+  margin: 25px;
+  border: 1px solid mediumaquamarine;
+  border-radius: 25px;
+}

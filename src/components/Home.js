@@ -2,6 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchCurrentUser } from '../actions/user'
 import Loading from './Loading'
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import "../assets/css/Home.css" 
 
 class Home extends React.Component {
 
@@ -12,8 +16,37 @@ class Home extends React.Component {
   }
 
   render(){
+    const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      pauseOnHover: true,
+      arrows: false,
+      centerMode: true,
+      draggable: true,
+    };
+
+    console.log({...settings})
     return(
-      localStorage.getItem('jwt') && this.props.authenticatingUser ? <Loading/> : <div>Home</div>
+      localStorage.getItem('jwt') && this.props.authenticatingUser ? <Loading/> : 
+      <div>
+
+        <div>
+          
+        <Slider {...settings}>
+          <div className="home-page-one">
+            <h1>Hello</h1>
+            <button>Press me</button>
+          </div>
+          <div>
+            <h1>Home</h1>
+          </div>
+        </Slider>
+        </div>
+      </div>
     )
   }
 }
