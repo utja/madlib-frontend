@@ -28,10 +28,13 @@ class Home extends React.Component {
       centerMode: true,
       draggable: true,
     };
-    if (localStorage.getItem('jwt') && this.props.authenticatingUser) {
+    if (this.props.authenticatingUser) {
       return <Loading/>
     } else if (this.props.loggedIn) {
-      return <h1>Logged in</h1>
+      return (
+        // change welcome page
+        <h1>Welcome {this.props.user.username}!</h1>
+      )
     } else {
         return(
           <div className="slider-container">
@@ -64,7 +67,8 @@ class Home extends React.Component {
 const mapStateToProps = state => {
   return{
     loggedIn: state.user.loggedIn,
-    authenticatingUser: state.user.authenticatingUser
+    authenticatingUser: state.user.authenticatingUser,
+    user: state.user.user
   }
 }
 
