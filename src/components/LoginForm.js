@@ -41,7 +41,6 @@ class LoginForm extends React.Component{
   }
 
   render(){
-    console.log(this.props)
     return(
       <div className="login-form">
         <Button onClick={this.handleOpen}>Login</Button>

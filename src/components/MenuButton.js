@@ -32,7 +32,6 @@ class MenuButton extends React.Component {
     const listItems = this.props.items.map(item =>
       <MenuItem key={item.id} component={Link} to={item.link} onClick={this.handleClose}>{item.name}</MenuItem>
     );
-    console.log(this.props)
     return (
       <div>
         <IconButton
