@@ -21,7 +21,7 @@ class Home extends React.Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      // autoplay: true,
       autoplaySpeed: 3000,
       pauseOnHover: true,
       arrows: false,
@@ -36,9 +36,14 @@ class Home extends React.Component {
         return(
           <div className="slider-container">
             <Slider {...settings}>
-              <div className="home-page-one">
-                <h1>Hello</h1>
-                <button>Press me</button>
+              <div className="homepage-one">
+                <div className="homepage-content">
+                  <h1 className="header-one">
+                    Create and Share Entertaining Stories <br></br>
+                    with Friends and Family
+                  </h1>
+                  <h2 className="subheader-one">Sign up today!</h2>
+                </div>
               </div>
               <div>
                 <h1>Home</h1>
