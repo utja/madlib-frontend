@@ -1,10 +1,6 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button'
-import PaletteIcon from '@material-ui/icons/Palette'
-import { Link } from 'react-router-dom'
 import StoriesList from './StoriesList'
-import Story from './Story';
 import { withStyles } from '@material-ui/core/styles';
 import withAuth from '../../hocs/withAuth'
 import { getStories } from '../../actions/story'

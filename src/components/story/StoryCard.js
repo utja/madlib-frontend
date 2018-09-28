@@ -3,8 +3,6 @@ import Story from './Story';
 import Button from '@material-ui/core/Button'
 import PaletteIcon from '@material-ui/icons/Palette'
 import { Link } from 'react-router-dom'
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux'
