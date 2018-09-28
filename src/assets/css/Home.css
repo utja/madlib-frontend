@@ -8,6 +8,7 @@
 
 .slick-slide, .slick-slide *{ outline: none !important; }
 
+
 .slick-dots li.slick-active button:before
 {
   color: MediumAquamarine;
@@ -21,4 +22,9 @@
   margin: 25px;
   border: 1px solid mediumaquamarine;
   border-radius: 25px;
+}
+
+.slick-track
+{
+  left: -25px;
 }
