@@ -37,16 +37,22 @@ class Home extends React.Component {
           <div className="slider-container">
             <Slider {...settings}>
               <div className="homepage-one">
-                <div className="homepage-content">
-                  <h1 className="header-one">
-                    Create and Share Entertaining Stories <br></br>
-                    with Friends and Family
+                <div className="homepage-one-content">
+                  <h1 className="header">
+                    Create entertaining stories and <br/>
+                    share with friends and family
                   </h1>
-                  <h2 className="subheader-one">Sign up today!</h2>
+                  <h2 className="subheader">Sign up today!</h2>
                 </div>
               </div>
-              <div>
-                <h1>Home</h1>
+              <div className="homepage-two">
+                <div className="homepage-two-content">
+                  <h1 className="header">
+                    Bring the imagination of <br/>
+                    stories to life 
+                  </h1>
+                  <h2 className="subheader">Log in to draw your masterpiece!</h2>
+                </div>
               </div>
             </Slider>
           </div>

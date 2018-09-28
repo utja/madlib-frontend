@@ -32,14 +32,34 @@
   position: relative;
 }
 
-.homepage-content
+.homepage-one-content
 {
   position: absolute;
   right: 40px;
   top: 225px;
 }
 
-.header-one 
+.homepage-two-content
+{
+  position: absolute;
+  right: 240px;
+  top: 225px;
+}
+
+.homepage-two
+{
+  background-image: url(../images/home-two.jpg);
+  background-size: cover;
+  background-position: center top;
+  /* background-repeat: no-repeat; */
+  height: 500px;
+  margin: 25px;
+  border: 1px solid mediumaquamarine;
+  border-radius: 25px;
+  position: relative;
+}
+
+.header
 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size:24px;
@@ -47,9 +67,14 @@
   text-align: center;
   font-weight: normal;
   color: #222;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
 }
 
-.subheader-one 
+.subheader
 {
   font-family: "Lucida Grande", Tahoma;
   font-size: 10px;
@@ -60,4 +85,9 @@
   margin-top: 10px;
   text-align: center!important;
   letter-spacing: 0.3em;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
 }
