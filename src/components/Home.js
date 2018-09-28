@@ -28,26 +28,25 @@ class Home extends React.Component {
       centerMode: true,
       draggable: true,
     };
-
-    console.log({...settings})
-    return(
-      localStorage.getItem('jwt') && this.props.authenticatingUser ? <Loading/> : 
-      <div>
-
-        <div>
-          
-        <Slider {...settings}>
-          <div className="home-page-one">
-            <h1>Hello</h1>
-            <button>Press me</button>
+    if (localStorage.getItem('jwt') && this.props.authenticatingUser) {
+      return <Loading/>
+    } else if (this.props.loggedIn) {
+      return <h1>Logged in</h1>
+    } else {
+        return(
+          <div className="slider-container">
+            <Slider {...settings}>
+              <div className="home-page-one">
+                <h1>Hello</h1>
+                <button>Press me</button>
+              </div>
+              <div>
+                <h1>Home</h1>
+              </div>
+            </Slider>
           </div>
-          <div>
-            <h1>Home</h1>
-          </div>
-        </Slider>
-        </div>
-      </div>
-    )
+        )
+    }
   }
 }
 
