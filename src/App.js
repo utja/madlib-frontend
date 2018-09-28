@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 // import { compose } from 'redux'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
@@ -12,9 +13,10 @@ import SignupForm from './components/SignupForm'
 import StoriesContainer from './containers/StoriesContainer'
 import DrawingsContainer from './containers/DrawingsContainer'
 import NewStoryContainer from './containers/NewStoryContainer'
+import StoryContainer from './containers/StoryContainer'
 import './assets/css/App.css';
 import NewDrawingContainer from './containers/NewDrawingContainer';
-
+import { BrowserRouter as Router } from 'react-router-dom'
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -37,26 +39,23 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-
-      <div className="App">
-        {/* <header className="App-header">
-          <h1 className="App-title">Welcome to Ad Scribitum</h1>
-        </header> */}
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/stories" component={StoriesContainer} />
-          <Route exact path="/stories/new" component={NewStoryContainer} />
-          <Route exact path="/drawings/new" component={NewDrawingContainer} />
-          <Route exact path="/drawings" component={DrawingsContainer} />
-          <Route exact path="/profile" component={Profile} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-      </MuiThemeProvider>
+      <Router>
+        <MuiThemeProvider theme={theme}>
+          <div className="App">
+            <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignupForm} />
+              <Route path="/stories" component={StoriesContainer} />} />
+              <Route exact path="/drawings/new" component={NewDrawingContainer} />
+              <Route exact path="/drawings" component={DrawingsContainer} />
+              <Route exact path="/profile" component={Profile} />
+              <Route component={NotFound} />
+            </Switch>
+          </div>
+        </MuiThemeProvider>
+      </Router>
     );
   }
 }
@@ -65,6 +64,12 @@ class App extends Component {
 //   withRouter(App),
 //   withTheme(theme)
 // )(App);
+// const mapStateToProps = state => {
+//   return {
+//     selectedStory: state.stories.selectedStory
+//   }
+// }
 
 // export default withRouter(App);
-export default withRouter(App);
+export default App;
+// export default withRouter(connect(mapStateToProps)(App));
