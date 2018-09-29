@@ -4,6 +4,14 @@ import { connect } from 'react-redux';
 import { getStory } from '../actions/story'
 import Slider from 'react-slick'
 import '../assets/css/Story.css';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  container: {
+    padding: theme.spacing.unit * 2
+  },
+});
 
 class StoryContainer extends React.Component {
 
@@ -20,16 +28,19 @@ class StoryContainer extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       speed: 500,
-      dots: true
+      dots: true,
+      arrows: false
     };
+    const { classes } = this.props
     const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><h1>{drawing.title}</h1><img src={drawing.data_url} alt={drawing.title}/></div>)
     return(
-      <div className="story-container">
-        <div className="slider-container">
-          {this.props.drawings.length ? <Slider {...settings}>{mapDrawings}</Slider> : null}
-        </div>
+      <Grid container className={classes.container}>
         <Story/>
-      </div>
+        <Grid item xs={6}>
+
+          {this.props.drawings.length ? <Slider {...settings}>{mapDrawings}</Slider> : null}
+        </Grid>
+      </Grid>
     )
   }
 }
@@ -46,4 +57,4 @@ const mapDispatchToProps = dispatch => {
     getStory: storyId => dispatch(getStory(storyId))
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(StoryContainer);
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(StoryContainer));
