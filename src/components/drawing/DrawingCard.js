@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 class DrawingCard extends React.Component {
 
-
+  //TODO change to image instead of canvas
+  //##############################
   componentDidMount(){
     const myCanvas = document.getElementById(`drawing-${this.props.drawing.id}`);
     const ctx = myCanvas.getContext('2d');
