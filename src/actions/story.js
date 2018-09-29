@@ -18,7 +18,31 @@ export const getTemplates = () => {
       dispatch({ type: 'SET_TEMPLATES', payload: JSONResponse })
       dispatch({type: 'LOADED_STORIES'})
     })
-    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
+    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_STORIES', payload: error})))
+  }
+}
+
+export const getStory = (storyId) => {
+  return dispatch => {
+    dispatch({type: 'LOADING_STORIES'})
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/stories/${storyId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      } else {
+        throw response
+      }
+    })
+    .then(JSONResponse => {
+      dispatch({ type: 'SET_DRAWINGS', payload: JSONResponse.drawings })
+      dispatch({type: 'LOADED_STORIES'})
+    })
+    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_STORIES', payload: error})))
   }
 }
 
@@ -42,7 +66,7 @@ export const getStories = () => {
       dispatch({ type: 'SET_STORIES', payload: JSONResponse })
       dispatch({type: 'LOADED_STORIES'})
     })
-    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
+    .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOADING_STORIES', payload: error})))
   }
 }
 

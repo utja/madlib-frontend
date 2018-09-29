@@ -1,12 +1,35 @@
-import React from 'react'
+import React from 'react';
+import Story from '../components/story/Story';
+import { connect } from 'react-redux';
+import { getStory } from '../actions/story'
 
 class StoryContainer extends React.Component {
 
+  componentDidMount(){
+    // dispatch action to fetch drawings for particular story
+    this.props.getStory(this.props.story.id)
+  }
+
   render(){
+    console.log(this.props)
     return(
-      <h1>Story One</h1>
+      <div className="story-container">
+        <Story/>
+        
+      </div>
     )
   }
 }
 
-export default StoryContainer
+const mapStateToProps = state => {
+  return {
+    story: state.stories.selectedStory
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getStory: storyId => dispatch(getStory(storyId))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(StoryContainer);
