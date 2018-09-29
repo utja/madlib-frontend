@@ -7,26 +7,33 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { getStory } from '../../actions/story'
 
 
 
-const StoryCard = props => {
+class StoryCard extends React.Component {
 
-  return(
-    <div>
-      <Story />
-      <Grid item>
-        <Button className={props.classes.button} component={Link} to="/drawings/new" size="large" color="primary" variant="contained">
-          Create Drawing <PaletteIcon/>
-        </Button>
-      </Grid>
-      <Grid item>
-        <Button className={props.classes.button} component={Link} to={`/stories/${props.story.id}`} size="large" color="primary" variant="contained">
-          View Drawings
-        </Button>
-      </Grid>
-    </div>
-  )
+  componentDidMount(){
+    this.props.getStory(this.props.story.id)
+  }
+
+  render(){
+    return(
+      <div>
+        <Story />
+        <Grid item>
+          <Button className={this.props.classes.button} component={Link} to="/drawings/new" size="large" color="primary" variant="contained">
+            Create Drawing <PaletteIcon/>
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button className={this.props.classes.button} component={Link} to={`/stories/${this.props.story.id}`} size="large" color="primary" variant="contained">
+            View Drawings
+          </Button>
+        </Grid>
+      </div>
+    )
+  }
 }
 
 const styles = theme => ({
@@ -45,7 +52,13 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    getStory: storyId => dispatch(getStory(storyId))
+  }
+}
+
 export default compose(
   withStyles(styles),
-  connect(mapStateToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(StoryCard)
