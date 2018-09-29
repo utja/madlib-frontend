@@ -138,9 +138,15 @@ class Canvas extends React.Component {
                 className={classes.textField}
                 onChange={this.handleChange}
                 required />
-              <Button onClick={(event) => this.handleSubmit(event, this.canvas)} className={this.props.classes.button} size="small" color="primary" variant="contained">
-                Submit
-              </Button>
+              {this.state.title === "" ? 
+                <Button disabled className={this.props.classes.button} size="small" color="primary" variant="contained">
+                  Submit
+                </Button>
+              :
+                <Button onClick={(event) => this.handleSubmit(event, this.canvas)} className={this.props.classes.button} size="small" color="primary" variant="contained">
+                  Submit
+                </Button>
+              }
           </Grid>
           <Grid item xs>
             <FormControl component="fieldset" className={classes.formControl}>
