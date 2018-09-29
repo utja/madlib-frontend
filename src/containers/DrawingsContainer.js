@@ -43,6 +43,8 @@ class DrawingsContainer extends React.Component{
         // </div>
 
       //TODO - Reverse Image Order - newest to oldest
+      // Also show the story for the drawing that is selected for user reference
+      //################################
       <Grid className="drawings-container" container justify="space-around">
         <DrawingsList drawings={this.props.drawings}/>
         {this.props.selectedDrawing ? <DrawingCard/> : null}

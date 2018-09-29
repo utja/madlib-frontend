@@ -86,8 +86,9 @@ class Canvas extends React.Component {
   handleSubmit = (event, canvas) => {
     event.preventDefault()
     const dataURL = canvas.lowerCanvasEl.toDataURL()
-    // this.props.postDrawing: (dataURL, storyID, userID, title)
     this.props.postDrawing(dataURL, this.props.selectedStory.id, this.props.user.id, this.state.title)
+    //TODO ##################################
+    // push to stories/# so user can see other drawings for that one story
     this.props.history.push('/drawings')
   }
 
