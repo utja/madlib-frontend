@@ -23,7 +23,8 @@ class StoryContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    story: state.stories.selectedStory
+    story: state.stories.selectedStory,
+    drawings: state.drawings.drawings
   }
 }
 
