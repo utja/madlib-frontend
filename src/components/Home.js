@@ -25,7 +25,6 @@ class Home extends React.Component {
       autoplaySpeed: 3000,
       pauseOnHover: true,
       arrows: false,
-      centerMode: true,
       draggable: true,
     };
     if (this.props.authenticatingUser) {
