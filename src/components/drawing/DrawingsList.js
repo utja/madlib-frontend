@@ -30,7 +30,7 @@ const DrawingsList = props => {
     //     </Grid>
     //   </Grid>
 
-    <Grid item container direction="column" xs={4}>
+    <Grid item container direction="column" xs={3}>
       <h1 className="cursive">Drawings</h1>
         <Grid item container direction="column-reverse">
           {mapDrawingItems}
