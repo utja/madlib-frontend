@@ -48,7 +48,7 @@ class Canvas extends React.Component {
     })
 
     this.canvas = canvas
-
+    this.canvas.backgroundColor = 'white'
     this.canvas.freeDrawingBrush = new fabric[this.state.value + 'Brush'](this.canvas);
     
     this.canvas.freeDrawingBrush.color = this.state.brushColor;
