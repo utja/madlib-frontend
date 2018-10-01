@@ -43,7 +43,7 @@ class LoginForm extends React.Component{
   render(){
     return(
       <div className="login-form">
-        <Button onClick={this.handleOpen}>Login</Button>
+        <Button color="secondary" onClick={this.handleOpen}>Login</Button>
 
         <Dialog
           open={this.state.open}

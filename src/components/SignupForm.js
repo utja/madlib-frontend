@@ -76,7 +76,7 @@ class SignupForm extends React.Component{
     return(
       // this.props.loggedIn ? <Redirect to="/" /> :
         <div className="signup-form">
-        <Button onClick={this.handleOpen}>Signup</Button>
+        <Button color="secondary" onClick={this.handleOpen}>Signup</Button>
 
         <Dialog
           open={this.state.open}
