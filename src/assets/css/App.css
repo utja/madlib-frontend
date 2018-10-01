@@ -37,10 +37,6 @@ canvas {
 }
 
 body {
-  /* background-image: url(../images/background-one.png); */
-  /* background-color: #DFDCE3; */
-  /* background-repeat: no-repeat; */
-  /* background: linear-gradient(#A3BDED, #6991C7) fixed; */
   background: linear-gradient(to right, #93A5CF, #E4EFE9) fixed;
 }
 

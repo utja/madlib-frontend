@@ -32,7 +32,7 @@ class StoryContainer extends React.Component {
       arrows: false
     };
     const { classes } = this.props
-    const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><h1>{drawing.title}</h1><img src={drawing.data_url} alt={drawing.title}/></div>)
+    const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><h1 className="cursive">{drawing.title}</h1><img src={drawing.data_url} alt={drawing.title}/></div>)
     return(
       <Grid container className={classes.container}>
         <Story/>

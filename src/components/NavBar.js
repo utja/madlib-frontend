@@ -12,12 +12,12 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  grow: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 100,
+  },
+  title: {
+    marginRight: 'auto',
   },
   avatar: {
     width: 50,
@@ -87,7 +87,7 @@ class NavBar extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <MenuButton items={menuItems} iconType={MenuIcon}/>
-          <Typography variant="title" color="inherit" className={classes.grow}>
+          <Typography variant="title" color="inherit" className={classes.title}>
             Ad Scribitum
           </Typography>
           {/* render signup if not logged in */}
