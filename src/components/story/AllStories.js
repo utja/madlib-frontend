@@ -27,7 +27,7 @@ class AllStories extends React.Component {
   render(){
     const { classes} = this.props
     return(
-      <Grid className={classes.container} container justify="space-around">    
+      <Grid className={classes.container} container justify="space-around">
         <StoriesList stories={this.props.stories}/>
         {this.props.selectedStory ? 
           <Grid container item xs direction="column" alignItems="center" spacing={24}>
