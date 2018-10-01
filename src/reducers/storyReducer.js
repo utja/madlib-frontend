@@ -55,6 +55,9 @@ export default function storyReducer(state = initialStoryState, action) {
       return {...state, selectedTemplate: action.payload };
     case 'SET_STORY':
       return {...state, selectedStory: action.payload };
+      // TODO finish commenting - receive whole drawing, set and spread story to action.pay.load.story and user to action.payload.user
+    case 'SET_STORY_IN_DRAWINGS':
+      return {...state, selectedStory: {...action.payload.story, user: action.payload.user }};
     case 'UNSELECT_TEMPLATE':
       return {...state, selectedTemplate: null };
     case 'SET_TEMPLATES':

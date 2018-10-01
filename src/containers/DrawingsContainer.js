@@ -5,6 +5,7 @@ import DrawingsList from '../components/drawing/DrawingsList'
 import withAuth from '../hocs/withAuth'
 import { getDrawings } from '../actions/drawing'
 import DrawingCard from '../components/drawing/DrawingCard'
+import Story from '../components/story/Story'
 
 // import InteractiveList from '../MaterialList'
 import Grid from '@material-ui/core/Grid';
@@ -47,6 +48,7 @@ class DrawingsContainer extends React.Component{
       //################################
       <Grid className="drawings-container" container justify="space-around">
         <DrawingsList drawings={this.props.drawings}/>
+        {this.props.selectedStory ? <Story/> : null}
         {this.props.selectedDrawing ? <DrawingCard/> : null}
       </Grid>
     )
@@ -57,7 +59,8 @@ class DrawingsContainer extends React.Component{
 const mapStateToProps = state => {
   return {
     drawings: state.drawings.drawings,
-    selectedDrawing: state.drawings.selectedDrawing
+    selectedDrawing: state.drawings.selectedDrawing,
+    selectedStory: state.stories.selectedStory
   }
 }
 
