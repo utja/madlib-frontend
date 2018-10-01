@@ -9,15 +9,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SignupForm from './SignupForm';
 
 const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 100,
-  },
   title: {
+    marginLeft: 10,
     marginRight: 'auto',
+    fontSize: '2em',
   },
   avatar: {
     width: 50,
@@ -84,16 +79,16 @@ class NavBar extends React.Component {
     const userAvatar = () => <Avatar src={this.props.user.avatar} className={classes.avatar} />
     const avatarPadding = {padding: 7}
     return(
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <MenuButton items={menuItems} iconType={MenuIcon}/>
-          <Typography variant="title" color="inherit" className={classes.title}>
+          <Typography style={styles.title} variant="title" color="secondary" className={classes.title}>
             Ad Scribitum
           </Typography>
           {/* render signup if not logged in */}
           { loggedIn ? 
             <Fragment>
-              <Button onClick={this.handleLogout}/* component={logout fn}*/>Logout</Button>
+              <Button color="secondary" onClick={this.handleLogout}/* component={logout fn}*/>Logout</Button>
               
               <MenuButton items={userItems} styling={avatarPadding} iconType={userAvatar} ></MenuButton> 
             </Fragment>
