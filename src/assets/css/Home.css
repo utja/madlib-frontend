@@ -1,66 +1,60 @@
-.slick-dots li button:before
-{
+.slick-dots li button:before {
   font-family: 'slick';
   font-size: 15px;
   line-height: 20px;
-  color: MediumAquamarine ;
+  color: #6796fc ;
 }
 
-.slick-slide, .slick-slide *{ outline: none !important; }
-
-
-.slick-dots li.slick-active button:before
-{
-  color: MediumAquamarine;
+.slick-slide, .slick-slide *{ 
+  outline: none !important; 
 }
 
-.slick-track
-{
+
+.slick-dots li.slick-active button:before {
+  color: #6796fc;
+}
+
+.slick-track {
   left: -25px;
 }
 
-.homepage-one
-{
+.homepage-one {
   background-image: url(../images/home-one.jpg);
   background-size: cover;
   background-position: center top;
   /* background-repeat: no-repeat; */
   height: 500px;
   margin: 25px;
-  border: 1px solid mediumaquamarine;
+  border: 1px solid #6796fc;
   border-radius: 25px;
   position: relative;
 }
 
-.homepage-one-content
-{
+.homepage-one-content {
   position: absolute;
   right: 40px;
   top: 225px;
 }
 
-.homepage-two-content
-{
+.homepage-two-content {
   position: absolute;
   right: 240px;
   top: 225px;
 }
 
-.homepage-two
-{
+.homepage-two {
   background-image: url(../images/home-two.jpg);
   background-size: cover;
   background-position: center top;
   /* background-repeat: no-repeat; */
   height: 500px;
   margin: 25px;
-  border: 1px solid mediumaquamarine;
+  border: 1px solid #6796fc;
   border-radius: 25px;
   position: relative;
 }
 
-.header
-{
+.header {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size:24px;
   margin-top: 5px; margin-bottom: 0px;
@@ -74,8 +68,7 @@
     1px 1px 0 #fff;
 }
 
-.subheader
-{
+.subheader {
   font-family: "Lucida Grande", Tahoma;
   font-size: 10px;
   font-weight: lighter;

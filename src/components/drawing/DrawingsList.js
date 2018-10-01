@@ -12,7 +12,7 @@ const DrawingsList = props => {
   return(
     <Grid item >
       <List>
-        <h1>Drawings List</h1>
+        <h1 className="cursive">Drawings List</h1>
         {mapDrawingItems}
       </List>
     </Grid>

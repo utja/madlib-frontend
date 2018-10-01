@@ -32,7 +32,9 @@ class Home extends React.Component {
     } else if (this.props.loggedIn) {
       return (
         // change welcome page
-        <h1>Welcome {this.props.user.username}!</h1>
+        <div className="homepage-welcome cursive">
+          <h1>Welcome {this.props.user.username}!</h1>
+        </div>
       )
     } else {
         return(

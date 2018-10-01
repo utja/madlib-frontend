@@ -16,15 +16,17 @@ import { BrowserRouter as Router } from 'react-router-dom'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#69F0AE',
-    },
-    // change secondary colors if necessary
-    secondary: {
-      light: '#0066ff',
-      main: '#0044ff',
-      contrastText: '#ffcc00',
+      // main: '#69F0AE',
+      main: '#6796fc',
     },
   },
+  typography: {
+    fontFamily: [
+      'Architects Daughter',
+      'cursive'
+    ].join(',')
+  }
+
 });
 
 const App = props => {
