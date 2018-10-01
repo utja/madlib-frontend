@@ -6,16 +6,8 @@ import withAuth from '../hocs/withAuth'
 import { getDrawings } from '../actions/drawing'
 import DrawingCard from '../components/drawing/DrawingCard'
 import Story from '../components/story/Story'
-
-// import InteractiveList from '../MaterialList'
 import Grid from '@material-ui/core/Grid';
-// import Button from '@material-ui/core/Button'
-// import CardActions from '@material-ui/core/CardActions';
-// import Card from '@material-ui/core/Card';
-// import PaletteIcon from '@material-ui/icons/Palette'
-// import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
-
 
 // storiesContainer will render when user goes to /stories to see all stories
 // this page will have a storyList component that will display story items (based on ratings or by newest?)
@@ -48,7 +40,7 @@ class DrawingsContainer extends React.Component{
       //################################
       <Grid className="drawings-container" container justify="space-around" spacing={16}>
         <DrawingsList drawings={this.props.drawings}/>
-        {this.props.selectedStory ? <Story/> : null}
+        {this.props.selectedDrawing ? <Story/> : null}
         {this.props.selectedDrawing ? <DrawingCard/> : null}
       </Grid>
     )
@@ -60,7 +52,6 @@ const mapStateToProps = state => {
   return {
     drawings: state.drawings.drawings,
     selectedDrawing: state.drawings.selectedDrawing,
-    selectedStory: state.stories.selectedStory
   }
 }
 
