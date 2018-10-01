@@ -27,7 +27,14 @@ const theme = createMuiTheme({
     fontFamily: [
       'Architects Daughter',
       'cursive'
-    ].join(',')
+    ].join(','),
+    body2: {
+      fontSize: 20,
+    },
+    headline: {
+      fontWeight: 500,
+      fontSize: 32,
+    }
   }
 
 });

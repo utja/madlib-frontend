@@ -19,7 +19,7 @@ class StoryCard extends React.Component {
 
   render(){
     return(
-      <div>
+      <Grid container direction="column" spacing={16}>
         <Story />
         <Grid item>
           <Button className={this.props.classes.button} component={Link} to="/drawings/new" size="large" color="primary" variant="contained">
@@ -31,7 +31,7 @@ class StoryCard extends React.Component {
             View Drawings
           </Button>
         </Grid>
-      </div>
+      </Grid>
     )
   }
 }

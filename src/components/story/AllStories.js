@@ -30,7 +30,7 @@ class AllStories extends React.Component {
       <Grid className={classes.container} container justify="space-around">    
         <StoriesList stories={this.props.stories}/>
         {this.props.selectedStory ? 
-          <Grid container item xs direction="column" justify="flex-start" alignItems="center" spacing={24}>
+          <Grid container item xs direction="column" alignItems="center" spacing={24}>
             <Grid item>
               <StoryCard/>
             </Grid>
