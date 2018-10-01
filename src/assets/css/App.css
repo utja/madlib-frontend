@@ -29,8 +29,12 @@
 
 canvas {
   border: 1px solid black;
-  background: white;
+  /* background: white; */
+  /* z-index: 1; */
 }
+
+
+
 
 img {
   background: whitesmoke;

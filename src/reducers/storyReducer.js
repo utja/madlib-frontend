@@ -60,6 +60,8 @@ export default function storyReducer(state = initialStoryState, action) {
       return {...state, selectedStory: {...action.payload.story, user: action.payload.user }};
     case 'UNSELECT_TEMPLATE':
       return {...state, selectedTemplate: null };
+    case 'UNSELECT_STORY':
+      return {...state, selectedStory: null };
     case 'SET_TEMPLATES':
       return { ...state, templates: action.payload}
     case 'LOGOUT':

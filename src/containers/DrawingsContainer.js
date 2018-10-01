@@ -22,6 +22,8 @@ const styles = {
 class DrawingsContainer extends React.Component{
 
   componentDidMount(){
+    this.props.unselectDrawing()
+    this.props.unselectStory()
     this.props.getDrawings()
   }
 
@@ -57,7 +59,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDrawings: () => dispatch(getDrawings())
+    getDrawings: () => dispatch(getDrawings()),
+    unselectDrawing: () => dispatch({type: 'UNSELECT_DRAWING'}),
+    unselectStory: () => dispatch({type: 'UNSELECT_DRAWING'})
   }
 }
 
