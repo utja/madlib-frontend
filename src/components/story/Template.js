@@ -87,7 +87,7 @@ class Template extends React.Component {
     const mapWordInputs = parsedWords.map(word => <WordInput key={word.id} word={word} value={this.state[word.key]} handleChange={this.handleChange} />)
     const { classes } = this.props;
     return (
-      <Grid item >
+      <Grid item xs>
         <form onSubmit={this.handleSubmit} id="create-story-form" noValidate autoComplete="off" className={classes.container}>
           <TextField
             id="outlined-helperText"

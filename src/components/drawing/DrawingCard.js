@@ -30,7 +30,7 @@ class DrawingCard extends React.Component {
     
     return(
       <div>
-        <h1>{this.props.drawing.title}</h1>
+        <h1 className="cursive">{this.props.drawing.title}</h1>
         <canvas width="450" height="450" id={`drawing-${this.props.drawing.id}`}></canvas>
       </div>
 

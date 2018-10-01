@@ -51,9 +51,13 @@ class NewStoryContainer extends React.Component {
     // console.log(this.props)
     return(
       // abstract form out so that forms for different stories can be rendered based on the props coming down
-    <Grid className="new-story-container" container justify="space-around">
-      <h1 className="cursive">Choose a template</h1>
+    <Grid className="new-story-container" container direciton="column" justify="space-around">
+      <Grid container item xs={4} justify="center" alignContent="flex-start">
+        <Grid item>
+          <h1 className="cursive">Choose a template</h1>
+        </Grid>
       <TemplatesList templates={this.props.templates} />
+      </Grid>
         {/* <StoryForm storyWords={this.props.storyWords} /> */}
         {/* <StoryForm template={this.props.selectedTemplate} /> */}
         {this.props.selectedTemplate ? <Template template={this.props.selectedTemplate} /> : null}
