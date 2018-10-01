@@ -22,8 +22,8 @@ const styles = theme => ({
 
   },
   container: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
+    background: 'rgba(245, 255, 250, 0.2)',
+    borderRadius: '25',
   }
 });
 
@@ -87,8 +87,8 @@ class Template extends React.Component {
     const mapWordInputs = parsedWords.map(word => <WordInput key={word.id} word={word} value={this.state[word.key]} handleChange={this.handleChange} />)
     const { classes } = this.props;
     return (
-      <Grid item xs>
-        <form onSubmit={this.handleSubmit} id="create-story-form" noValidate autoComplete="off" className={classes.container}>
+      <Grid item xs className={classes.container}>
+        <form onSubmit={this.handleSubmit} id="create-story-form" noValidate autoComplete="off">
           <TextField
             id="outlined-helperText"
             name="title"
