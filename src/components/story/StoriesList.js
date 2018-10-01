@@ -26,7 +26,7 @@ const StoriesList = props => {
       //     </Grid>
       //   : null}
       // </Grid>
-      <Grid container direction="column" xs={4}>
+      <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Stories</h1>
         <Grid item container direction="column-reverse">
           {mapStoryItems}

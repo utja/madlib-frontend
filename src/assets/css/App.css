@@ -32,12 +32,16 @@ canvas {
   background: white;
 }
 
+img {
+  background: whitesmoke;
+}
+
 .stories-container {
   display: flex;
 }
 
 body {
-  background: linear-gradient(to right, #93A5CF, #E4EFE9) fixed;
+  background: linear-gradient(-45deg, #93A5CF, #E4EFE9) fixed;
 }
 
 .cursive {
