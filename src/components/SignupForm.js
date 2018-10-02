@@ -129,6 +129,7 @@ class SignupForm extends React.Component{
             margin="normal"
             fullWidth
             label='password'
+            helperText='minimum 8 characters'
             type="password"
             className={classes.textField}
             onChange={this.handleChange}
@@ -144,6 +145,7 @@ class SignupForm extends React.Component{
             type="password"
             className={classes.textField}
             onChange={this.handleChange}
+            helperText='minimum 8 characters'
             required
             error={this.props.error ? this.props.error.includes(errorMessages.passwordConfirmation) : false}
             value={this.state.passwordConfirmation} />
