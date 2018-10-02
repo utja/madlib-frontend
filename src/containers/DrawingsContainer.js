@@ -13,12 +13,15 @@ import { withStyles } from '@material-ui/core/styles';
 // this page will have a storyList component that will display story items (based on ratings or by newest?)
 // this page will also have an individual story that will display when clicked on from the storyList
 
-const styles = {
-  button: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
+const styles = theme => ({
+  // button: {
+  //   marginLeft: 'auto',
+  //   marginRight: 'auto',
+  // },
+  container: {
+    padding: theme.spacing.unit * 2
   }
-}
+})
 class DrawingsContainer extends React.Component{
 
   componentDidMount(){
@@ -29,6 +32,7 @@ class DrawingsContainer extends React.Component{
 
   render(){
     // console.log('drawings container props', this.props)
+    const { classes } = this.props
     return(
         // without material ui
         // <div className="stories-container">
@@ -40,7 +44,7 @@ class DrawingsContainer extends React.Component{
       //TODO - Reverse Image Order - newest to oldest
       // Also show the story for the drawing that is selected for user reference
       //################################
-      <Grid className="drawings-container" container justify="space-around" spacing={16}>
+      <Grid className={classes.container} container justify="space-around" spacing={16}>
         <DrawingsList drawings={this.props.drawings}/>
         {this.props.selectedDrawing ? <Story/> : null}
         {this.props.selectedDrawing ? <DrawingCard/> : null}
