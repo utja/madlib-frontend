@@ -19,7 +19,7 @@ class DrawingCard extends React.Component {
     const { classes } = this.props
     return(
       <Grid item xs={3} className={classes.root}>
-        <img src={this.props.drawing.data_url} alt={this.props.drawing.title}/>
+        <img className="drawing" src={this.props.drawing.data_url} alt={this.props.drawing.title}/>
         <h1 className="cursive" style={{marginTop: 0, marginBlockEnd: 0}}>{this.props.drawing.title}</h1>
       </Grid>
 
