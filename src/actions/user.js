@@ -41,7 +41,8 @@ export const loginUser = userData => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       },
       body: JSON.stringify({
         user: {
@@ -75,7 +76,36 @@ export const fetchCurrentUser = () => {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-      .then(response => response.json())
-      .then(JSONResponse => dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse.user}))
+    .then(response => response.json())
+    .then(JSONResponse => dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse.user}))
+  }
+}
+
+export const updateUser = userData => {
+  // add option to update password
+  const { username, avatar, first_name, last_name, password } = userData
+  return (dispatch) => {
+    dispatch({type: 'AUTHENTICATING_USER'})
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userData.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password,
+          avatar: avatar,
+          first_name: first_name,
+          last_name: last_name
+        }
+      })
+    })
+    .then(response => response.json())
+    .then(JSONResponse => {
+      dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse})
+    })
   }
 }

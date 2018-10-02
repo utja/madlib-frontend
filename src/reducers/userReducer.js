@@ -25,6 +25,15 @@ export default function userReducer(state = initialUserState, action) {
         error: action.payload.error,
         authenticatingUser: false
       }
+    case 'UPDATE_AVATAR':
+    // debugger
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          avatar: action.payload
+        }
+      }
     case 'LOGOUT':
       return initialUserState
     case 'FAILED_SIGNUP':
