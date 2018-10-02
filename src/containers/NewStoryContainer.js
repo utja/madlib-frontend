@@ -28,13 +28,6 @@ const styles = theme => ({
 
 class NewStoryContainer extends React.Component {
 
-  state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  };
-
   componentDidMount(){
     this.props.getTemplates()
   }
@@ -51,8 +44,8 @@ class NewStoryContainer extends React.Component {
     // console.log(this.props)
     return(
       // abstract form out so that forms for different stories can be rendered based on the props coming down
-    <Grid className="new-story-container" container direciton="column" justify="space-around">
-      <Grid container item xs={4} justify="center" alignContent="flex-start">
+    <Grid className="new-story-container" container justify="space-around">
+      <Grid container direction="column" item xs={4} alignContent="flex-start">
         <Grid item>
           <h1 className="cursive">Choose a template</h1>
         </Grid>
