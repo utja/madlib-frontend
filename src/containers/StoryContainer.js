@@ -11,6 +11,11 @@ const styles = theme => ({
   container: {
     padding: theme.spacing.unit * 2
   },
+  root: {
+    opacity: 0.8,
+    background: 'rgba(245, 255, 250, 0.4)',
+    borderRadius: 4,
+  }
 });
 
 class StoryContainer extends React.Component {
@@ -32,12 +37,11 @@ class StoryContainer extends React.Component {
       arrows: false
     };
     const { classes } = this.props
-    const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><h1 className="cursive">{drawing.title}</h1><img src={drawing.data_url} alt={drawing.title}/></div>)
+    const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><h1 className="cursive no-margin-top">{drawing.title}</h1><h2 className="cursive">{drawing.user.username}</h2><img src={drawing.data_url} alt={drawing.title}/></div>)
     return(
       <Grid container className={classes.container}>
-        <Story/>
-        <Grid item xs={6}>
-
+        <Story />
+        <Grid item xs={6} className={classes.root}>
           {this.props.drawings.length ? <Slider {...settings}>{mapDrawings}</Slider> : null}
         </Grid>
       </Grid>
