@@ -89,22 +89,16 @@ class Profile extends React.Component {
         <Grid container item xs>
           <Grid item xs>
             <Typography variant="headline">
-              Username:
+              Username
             </Typography>
             <Typography variant="display2" gutterBottom className={classes.display2}>
               {user.username}
             </Typography>
             <Typography variant="title">
-              Number of Stories: 
+              Name
             </Typography>
             <Typography variant="subheading" gutterBottom>
-              {user.stories.length}
-            </Typography>
-            <Typography variant="title">
-              Number of Drawings: 
-            </Typography>
-            <Typography variant="subheading" gutterBottom>
-              {user.drawings.length}
+              {`${user.first_name} ${user.last_name}`}
             </Typography>
           </Grid>
         </Grid>
