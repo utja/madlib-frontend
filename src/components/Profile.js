@@ -77,7 +77,6 @@ class Profile extends React.Component {
 
   render(){
     const { classes, user } = this.props
-    console.log(this.props)
     return(
       <Grid container  className={classes.container}>
 
