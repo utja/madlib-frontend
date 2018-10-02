@@ -6,6 +6,19 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "../assets/css/Home.css" 
+import Grid from '@material-ui/core/Grid';
+import { Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  container: {
+    padding: theme.spacing.unit * 2
+  },
+  item: {
+    border: '1px solid #6796fc',
+    borderRadius: 4
+  }
+});
 
 class Home extends React.Component {
 
@@ -16,6 +29,7 @@ class Home extends React.Component {
   }
 
   render(){
+    const { classes } = this.props
     const settings = {
       dots: true,
       infinite: true,
@@ -32,9 +46,29 @@ class Home extends React.Component {
     } else if (this.props.loggedIn) {
       return (
         // change welcome page
-        <div className="homepage-welcome cursive">
-          <h1>Welcome {this.props.user.username}!</h1>
-        </div>
+        <Grid container className={classes.container}>
+          <Grid item xs={12}>
+            <Typography variant="headline">
+              Welcome {this.props.user.username}!
+            </Typography>
+          </Grid>
+          <Grid justify="space-evenly" container item className={classes.container}>
+            <Grid container justify="center" xs={4} item className={classes.item}>
+              <Grid item>
+                <Typography variant="display2">
+                  Stories
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container justify="center" xs={4} item className={classes.item}>
+              <Grid item>
+                <Typography variant="display2">
+                  Drawings
+                </Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       )
     } else {
         return(
@@ -79,4 +113,4 @@ const mapDispatchToProps = /*FUNCTION*/ (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Home))
