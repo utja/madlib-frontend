@@ -33,7 +33,7 @@ class StoryContainer extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       speed: 500,
-      dots: true,
+      dots: false,
       arrows: true
     };
     const { classes } = this.props
