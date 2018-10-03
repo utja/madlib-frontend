@@ -6,23 +6,8 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import "../assets/css/Home.css" 
-import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import { Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-
-import ListSubheader from '@material-ui/core/ListSubheader';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
-
 
 const styles = theme => ({
   container: {
@@ -30,7 +15,15 @@ const styles = theme => ({
   },
   item: {
     border: '1px solid #6796fc',
-    borderRadius: 4
+    borderRadius: 4,
+    backgroundColor: '#6796fc',
+  },
+  display2: {
+    color: '#fff'
+  },
+  listItem: {
+    textAlign: 'center',
+    backgroundColor: '#a0beff'
   }
 });
 
@@ -71,9 +64,9 @@ class Home extends React.Component {
             </Typography>
           </Grid>
           <Grid justify="space-evenly" container item className={classes.container}>
-            <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
+            <Grid container spacing={0} direction="column" xs={4} item className={classes.item}>
               <Grid item>
-                <Typography variant="display2">
+                <Typography variant="display2" className={classes.display2}>
                   Your Stories
                 </Typography>
               </Grid>
@@ -81,13 +74,21 @@ class Home extends React.Component {
               null
               :
               <Grid item>
-                Hello
+                <List>
+                  {this.props.userStories.map(story => {
+                    return(
+                      <ListItem key={story.id} divider button className={classes.listItem}>
+                        <ListItemText primary={story.title} />
+                      </ListItem>
+                    )
+                  })}
+                </List>
               </Grid>
               }
             </Grid>
-            <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
+            <Grid container direction="column" xs={4} item className={classes.item}>
               <Grid item>
-                <Typography variant="display2">
+                <Typography variant="display2" className={classes.display2}>
                   Your Drawings
                 </Typography>
               </Grid>
@@ -95,7 +96,15 @@ class Home extends React.Component {
               null
               :
               <Grid item>
-                World
+              <List>
+                  {this.props.userDrawings.map(drawing => {
+                    return(
+                      <ListItem key={drawing.id} divider button className={classes.listItem}>
+                        <ListItemText primary={drawing.title} />
+                      </ListItem>
+                    )
+                  })}
+                </List>
               </Grid>
               }
             </Grid>
