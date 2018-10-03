@@ -126,7 +126,7 @@ class Canvas extends React.Component {
     const { classes } = this.props
       return(
         <Fragment>
-          <Grid item xs className="canvas">
+          <Grid item xs={3} className="canvas">
               <canvas id="c" width="450" height="450">                    
               </canvas>
               <TextField
@@ -148,7 +148,7 @@ class Canvas extends React.Component {
                 </Button>
               }
           </Grid>
-          <Grid item xs>
+          <Grid item xs={3}>
             <FormControl component="fieldset" className={classes.formControl}>
               {/* <FormLabel component="legend">Mode</FormLabel>
               <RadioGroup
