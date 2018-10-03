@@ -10,6 +10,20 @@ import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+import ListSubheader from '@material-ui/core/ListSubheader';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
+
+
 const styles = theme => ({
   container: {
     padding: theme.spacing.unit * 2
@@ -31,6 +45,8 @@ class Home extends React.Component {
   }
 
   render(){
+    // TODO
+    // destructure state props
     const { classes } = this.props
     const settings = {
       dots: true,
@@ -58,19 +74,30 @@ class Home extends React.Component {
             <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
               <Grid item>
                 <Typography variant="display2">
-                  Stories
+                  Your Stories
                 </Typography>
               </Grid>
+              {this.props.userStories.length === 0 ? 
+              null
+              :
               <Grid item>
                 Hello
               </Grid>
+              }
             </Grid>
             <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
               <Grid item>
                 <Typography variant="display2">
-                  Drawings
+                  Your Drawings
                 </Typography>
               </Grid>
+              {this.props.userDrawings.length === 0 ? 
+              null
+              :
+              <Grid item>
+                World
+              </Grid>
+              }
             </Grid>
           </Grid>
         </Grid>
@@ -108,7 +135,9 @@ const mapStateToProps = state => {
   return{
     loggedIn: state.user.loggedIn,
     authenticatingUser: state.user.authenticatingUser,
-    user: state.user.user
+    user: state.user.user,
+    userStories: state.stories.userStories,
+    userDrawings: state.drawings.userDrawings
   }
 }
 
