@@ -17,6 +17,7 @@ const styles = theme => ({
     border: '1px solid #6796fc',
     borderRadius: 4,
     backgroundColor: '#6796fc',
+    alignSelf: 'flex-start'
   },
   display2: {
     color: '#fff'
