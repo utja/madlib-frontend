@@ -34,7 +34,7 @@ class StoryContainer extends React.Component {
       slidesToScroll: 1,
       speed: 500,
       dots: true,
-      arrows: false
+      arrows: true
     };
     const { classes } = this.props
     const mapDrawings = this.props.drawings.map(drawing => <div key={drawing.id} className="drawing"><img className="drawing" src={drawing.data_url} alt={drawing.title}/><h1 className="cursive no-margin-top">{drawing.title}</h1><h2 className="cursive">{drawing.user.username}</h2></div>)
