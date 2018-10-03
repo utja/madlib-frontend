@@ -120,6 +120,14 @@ class Canvas extends React.Component {
     this.setState({shadowOffsetY: value})
   }
 
+  handleBrushReset = () => {
+    this.setState({
+      shadowOffsetX: 0,
+      shadowOffsetY: 0,
+      shadowWidth: 0
+    })
+  }
+
 
 
   render(){
@@ -175,8 +183,11 @@ class Canvas extends React.Component {
               <Slider min={-50} max={50} name="shadowOffsetX" value={this.state.shadowOffsetX} aria-labelledby="shadow-offset-x" onChange={this.handleShadowOffsetXSlide} />
               <Typography id="shadow-offset-y">Shadow Offset Y: {Math.round(this.state.shadowOffsetY)}</Typography>
               <Slider min={-50} max={50} name="shadowOffsetY" value={this.state.shadowOffsetY} aria-labelledby="shadow-offset-y" onChange={this.handleShadowOffsetYSlide} />
+              <Button onClick={this.handleBrushReset} className={this.props.classes.button} size="small" color="primary" variant="contained">
+                Reset Shadow Brush and Offsets
+              </Button>
               <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
-                    Clear
+                Clear Canvas
               </Button>
             </FormControl>
           </Grid>
