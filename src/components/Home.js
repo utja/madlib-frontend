@@ -24,7 +24,7 @@ const styles = theme => ({
   },
   listItem: {
     textAlign: 'center',
-    backgroundColor: '#a0beff'
+    backgroundColor: '#a0beff',
   }
 });
 
@@ -36,6 +36,12 @@ class Home extends React.Component {
       this.props.fetchCurrentUser()
     }
     // if i have a token but don't know who it belongs to, ask the server for that user's data
+  }
+
+  handleClick(){
+    // TO DO
+    // on click go to the specific drawing or story
+    console.log('clicked')
   }
 
   render(){
@@ -78,7 +84,7 @@ class Home extends React.Component {
                 <List>
                   {this.props.userStories.map(story => {
                     return(
-                      <ListItem key={story.id} divider button className={classes.listItem}>
+                      <ListItem key={story.id} divider onClick={this.handleClick} button className={classes.listItem}>
                         <ListItemText primary={story.title} />
                       </ListItem>
                     )
@@ -100,7 +106,8 @@ class Home extends React.Component {
               <List>
                   {this.props.userDrawings.map(drawing => {
                     return(
-                      <ListItem key={drawing.id} divider button className={classes.listItem}>
+                      // no click functionality yet
+                      <ListItem key={drawing.id} divider button onClick={this.handleClick} className={classes.listItem}>
                         <ListItemText primary={drawing.title} />
                       </ListItem>
                     )
