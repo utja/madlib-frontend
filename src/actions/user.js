@@ -33,6 +33,8 @@ export const createUser = userData => {
   }
 }
 
+
+//login and set user stories and drawings
 export const loginUser = userData => {
   const { username, password } = userData
   return dispatch => {
@@ -61,6 +63,8 @@ export const loginUser = userData => {
     .then(JSONResponse => {
       localStorage.setItem('jwt', JSONResponse.jwt)
       dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+      dispatch({type: 'SET_USER_STORIES', payload: JSONResponse.user.stories})
+      dispatch({type: 'SET_USER_DRAWINGS', payload: JSONResponse.user.drawings})
     })
     .catch(response => response.json().then(error => dispatch({type: 'FAILED_LOGIN', payload: error})))
   }
