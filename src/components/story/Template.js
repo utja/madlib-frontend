@@ -30,8 +30,8 @@ const styles = theme => ({
 class Template extends React.Component {
   constructor(props){
     super(props)
-    this.state ={
-
+    this.state = {
+      title: ""
     }
   }
 
@@ -110,7 +110,7 @@ class Template extends React.Component {
           {mapWordInputs}
 
           {/* // check if values in the inputs are empty */}
-          {Object.values(this.state).includes("") ?
+          {(Object.values(this.state).includes("") && this.state.title.length === 0) ?
             <Button variant="outlined" disabled color="primary" className={classes.button}>
               Submit
             </Button> 
