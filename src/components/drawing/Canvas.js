@@ -28,6 +28,7 @@ class Canvas extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      // value is pencil for fabric js, but display as brush on app
       value: 'Pencil',
       brushColor: '#000000',
       brushWidth: 1,
@@ -149,30 +150,30 @@ class Canvas extends React.Component {
           </Grid>
           <Grid item xs>
             <FormControl component="fieldset" className={classes.formControl}>
-              <FormLabel component="legend">Mode</FormLabel>
+              {/* <FormLabel component="legend">Mode</FormLabel>
               <RadioGroup
                 aria-label="canvas-control"
                 name="value"
                 className={classes.group}
                 value={this.state.value}
                 onChange={this.handleChange}
-              >
-                <FormControlLabel
-                  value="Pencil"
+              > */}
+                {/* <FormControlLabel
+                  value="Brush"
                   control={<Radio color="primary" />}
-                  label="Pencil"
+                  label="Brush"
                   labelPlacement="end"
                 />
-              </RadioGroup>
+              </RadioGroup> */}
               <ColorPicker label={'Pick Brush Color'}color={this.state.brushColor} handleColor={this.handleBrushColor} />
-              <Typography  id="brush-width">Brush Width: {this.state.brushWidth}</Typography>
+              <Typography  id="brush-width">Brush Width: {Math.round(this.state.brushWidth)}</Typography>
               <Slider min={1} max={100} name="brushWidth" value={this.state.brushWidth} aria-labelledby="brush-width" onChange={this.handleBrushSlide} />
-              <Typography id="shadow-width">Shadow Width: {this.state.shadowWidth}</Typography>
-              <Slider min={1} max={100} name="shadowWidth" value={this.state.shadowWidth} aria-labelledby="shadow-width" onChange={this.handleShadowWidthSlide} />
+              <Typography id="shadow-width">Shadow Width: {Math.round(this.state.shadowWidth)}</Typography>
+              <Slider min={0} max={100} name="shadowWidth" value={this.state.shadowWidth} aria-labelledby="shadow-width" onChange={this.handleShadowWidthSlide} />
               <ColorPicker label={'Pick Shadow Color'} color={this.state.shadowColor} handleColor={this.handleShadowColor} />
-              <Typography id="shadow-offset-x">Shadow Offset X: {this.state.shadowOffsetX}</Typography>
+              <Typography id="shadow-offset-x">Shadow Offset X: {Math.round(this.state.shadowOffsetX)}</Typography>
               <Slider min={-50} max={50} name="shadowOffsetX" value={this.state.shadowOffsetX} aria-labelledby="shadow-offset-x" onChange={this.handleShadowOffsetXSlide} />
-              <Typography id="shadow-offset-y">Shadow Offset Y: {this.state.shadowOffsetY}</Typography>
+              <Typography id="shadow-offset-y">Shadow Offset Y: {Math.round(this.state.shadowOffsetY)}</Typography>
               <Slider min={-50} max={50} name="shadowOffsetY" value={this.state.shadowOffsetY} aria-labelledby="shadow-offset-y" onChange={this.handleShadowOffsetYSlide} />
               <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
                     Clear
