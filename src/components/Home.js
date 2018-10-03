@@ -25,6 +25,9 @@ const styles = theme => ({
   listItem: {
     textAlign: 'center',
     backgroundColor: '#a0beff',
+    '&:hover': {
+      backgroundColor: '#fcc06c',
+    }
   }
 });
 
