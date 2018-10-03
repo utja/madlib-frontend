@@ -7,6 +7,7 @@ import { getStories } from '../../actions/story'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import StoryCard from './StoryCard';
+import Loading from '../Loading';
 
 const styles = theme => ({
   button: {
@@ -19,25 +20,40 @@ const styles = theme => ({
 })
 
 class AllStories extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      loading: true
+    }
+  }
   
-  componentDidMount(){
+  // async componentDidMount() {
+  //   const response = await this.props.getStories()
+  //   this.setState({loading:false})
+  // }
+  componentDidMount() {
     this.props.getStories()
+    this.setState({loading:false})
   }
 
   render(){
     const { classes} = this.props
-    return(
-      <Grid className={classes.container} container justify="space-around">
-        <StoriesList stories={this.props.stories}/>
-        {this.props.selectedStory ? 
-          <Grid container item xs direction="column" alignItems="center" spacing={24}>
-            <Grid item>
-              <StoryCard/>
+    if (this.state.loading) {
+      return <Loading />
+    } else {
+      return(
+        <Grid className={classes.container} container justify="space-around">
+          <StoriesList stories={this.props.stories}/>
+          {this.props.selectedStory ? 
+            <Grid container item xs direction="column" alignItems="center" spacing={24}>
+              <Grid item>
+                <StoryCard/>
+              </Grid>
             </Grid>
-          </Grid>
-        : null}
-      </Grid>
-    )
+          : null}
+        </Grid>
+      )
+    }
   }
 }
 
