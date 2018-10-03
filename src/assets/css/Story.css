@@ -4,14 +4,15 @@ img {
 }
 
 .slick-prev {
-  left: 0;
+  left: 0px;
   z-index: 1; /* changing left of button won't give access to button*/
 }
 
 .slick-next {
-  right: 0;
+  right: 20px;
 }
 
 .slick-next:before, .slick-prev:before {
   color: #6796fc;
+  font-size: 40px !important;
 }
