@@ -89,17 +89,17 @@ class Template extends React.Component {
     return (
       <Grid item xs className={classes.container}>
         <form onSubmit={this.handleSubmit} id="create-story-form" noValidate autoComplete="off">
+          {mapWordInputs}
           <TextField
             id="outlined-helperText"
             name="title"
             margin="normal"
             variant="outlined"
-            label="title"
+            label="title for your story"
             className={classes.textField}
             onChange={this.handleChange}
             fullWidth
             required
-            autoFocus
             // ***************************************************************************************************************************
             // react does not like that the value is coming in as props and not set to the local state?
             // the form state comes down as props
@@ -107,7 +107,6 @@ class Template extends React.Component {
             // **************************************************************************************************************************
           >
           </TextField>
-          {mapWordInputs}
 
           {/* // check if values in the inputs are empty */}
           {(Object.values(this.state).includes("") && this.state.title.length === 0) ?
