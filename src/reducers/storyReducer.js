@@ -30,6 +30,7 @@ const initialStoryState = {
 
   // }],
   stories: [],
+  userStories: [],
   selectedStory: null,
   loadingStories: false,
   templates: [],
@@ -43,6 +44,8 @@ export default function storyReducer(state = initialStoryState, action) {
       return { ...state, stories: [...state.stories, action.payload] };
     case 'SET_STORIES':
       return {...state, stories: action.payload }
+    case 'SET_USER_STORIES':
+      return {...state, userStories: action.payload }
     case 'FAILED_LOADING_STORIES':
       return {...state, error: action.payload, failedLoading: true }
     case 'LOADING_STORIES':

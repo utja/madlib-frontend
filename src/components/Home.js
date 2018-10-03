@@ -24,7 +24,9 @@ class Home extends React.Component {
 
   componentDidMount() {
     // POTENTIAL SECURITY FLAW!!! my tokens don't expire & not blacklisted
-    if (localStorage.getItem('jwt') && !this.props.loggedIn) this.props.fetchCurrentUser()
+    if (localStorage.getItem('jwt') && !this.props.loggedIn) {
+      this.props.fetchCurrentUser()
+    }
     // if i have a token but don't know who it belongs to, ask the server for that user's data
   }
 
@@ -53,14 +55,17 @@ class Home extends React.Component {
             </Typography>
           </Grid>
           <Grid justify="space-evenly" container item className={classes.container}>
-            <Grid container justify="center" xs={4} item className={classes.item}>
+            <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
               <Grid item>
                 <Typography variant="display2">
                   Stories
                 </Typography>
               </Grid>
+              <Grid item>
+                Hello
+              </Grid>
             </Grid>
-            <Grid container justify="center" xs={4} item className={classes.item}>
+            <Grid container justify="center" direction="column" xs={4} item className={classes.item}>
               <Grid item>
                 <Typography variant="display2">
                   Drawings

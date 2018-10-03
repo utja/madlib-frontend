@@ -66,18 +66,23 @@ export const loginUser = userData => {
   }
 }
 
+// get current user and set stories and drawings
 export const fetchCurrentUser = () => {
   // takes the token in localStorage and finds out who it belongs to
   return (dispatch) => {
     dispatch({type: 'AUTHENTICATING_USER'}) //tells the app we are fetching
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/profile`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/profile`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(response => response.json())
-    .then(JSONResponse => dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse.user}))
+    .then(JSONResponse => {
+      dispatch({type: 'SET_CURRENT_USER', payload: JSONResponse.user})
+      dispatch({type: 'SET_USER_STORIES', payload: JSONResponse.user.stories})
+      dispatch({type: 'SET_USER_DRAWINGS', payload: JSONResponse.user.drawings})
+    })
   }
 }
 

@@ -3,6 +3,7 @@
 
 const initialDrawingState = {
   drawings: [],
+  userDrawings: [],
   selectedDrawing: null,
   loadingDrawings: false,
   failedLoading: false,
@@ -17,6 +18,8 @@ export default function drawingReducer(state = initialDrawingState, action) {
         return { ...state, loadingDrawings: false, failedLoading: false };
     case 'SET_DRAWINGS':
         return { ...state, drawings: action.payload };
+    case 'SET_USER_DRAWINGS':
+        return { ...state, userDrawings: action.payload };
     case 'SET_DRAWING':
         return { ...state, selectedDrawing: action.payload };
     case 'UNSELECT_DRAWING':

@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid';
 
 const StoryItem = props => {
-  // console.log('story item props', props)
+  console.log('story item props', props)
 
   const handleClick = (event) => {
     props.selectStory(props.story)
