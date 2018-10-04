@@ -134,7 +134,7 @@ class Canvas extends React.Component {
     const { classes } = this.props
       return(
         <Fragment>
-          <Grid item xs={3} className="canvas">
+          <Grid item xs={4} className="canvas">
               <canvas id="c" width="450" height="450">                    
               </canvas>
               <TextField
