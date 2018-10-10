@@ -1,38 +1,78 @@
 import React from 'react'
 import StoryItem from './StoryItem'
 import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import TablePaginationActionsWrapped from '../TablePaginationActions'
 
-const StoriesList = props => {
-  // debugger
-  const mapStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
-  return(
-    // <Grid className={classes.container} container justify="space-around">    
-      //   <StoriesList stories={this.props.stories}/>
-      //   {this.props.selectedStory ? 
-      //     <Grid container item xs direction="column" justify="flex-start" alignItems="center" spacing={24}>
-      //       <Grid item>
-      //         <Story />
-      //       </Grid>
-      //       <Grid item>
-      //         <Button className={this.props.classes.button} component={Link} to="/drawings/new" size="large" color="primary" variant="contained">
-      //           Create Drawing <PaletteIcon/>
-      //         </Button>
-      //       </Grid>
-      //       <Grid item>
-      //         <Button className={this.props.classes.button} component={Link} to={`/stories/${this.props.selectedStory.id}`} size="large" color="primary" variant="contained">
-      //           View Drawings
-      //         </Button>
-      //       </Grid>
-      //     </Grid>
-      //   : null}
-      // </Grid>
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit * 3,
+  },
+  table: {
+    minWidth: 500,
+  },
+  tableWrapper: {
+    overflowX: 'auto',
+  },
+});
+
+class StoriesList extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      page: 0,
+      rowsPerPage: 5,
+    }
+  }
+
+  handleChangePage = (event, page) => {
+    this.setState({ page });
+  };
+
+  handleChangeRowsPerPage = event => {
+    this.setState({ rowsPerPage: event.target.value });
+  };
+  
+  render(){
+    const { rowsPerPage, page } = this.state;
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.stories.length - page * rowsPerPage);
+    const mapStoryItems = this.props.stories.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(story => <StoryItem key={story.id} story={story} />);
+    return(
       <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Stories</h1>
         <Grid item container direction="column-reverse">
-          {mapStoryItems}
+          <Table style={{height: '450px'}}>
+            <TableBody>
+              {mapStoryItems}
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 48 * emptyRows }}>
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  colSpan={2}
+                  count={this.props.stories.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  onChangePage={this.handleChangePage}
+                  onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActionsWrapped}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
         </Grid>
       </Grid>
-  )
+  )}
 }
 
 export default StoriesList

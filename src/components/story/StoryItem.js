@@ -1,27 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 const StoryItem = props => {
-  console.log('story item props', props)
 
   const handleClick = (event) => {
     props.selectStory(props.story)
   }
-  const { story: { title, user: { username }} } = props
+  const { story: { id, title} } = props
   return(
-    <Grid item>
-      <ListItem divider >
-        <ListItemText primary={title} secondary={username} />
+    <TableRow key={id} style={{height: 48}}>
+      <TableCell component="th" scope="row">
+        {title}
+      </TableCell>
+      <TableCell>
         <Button onClick={handleClick} variant="outlined" color="primary">
           View Story
         </Button>
-      </ListItem>
-      {/* <Divider /> */}
-    </Grid>
+      </TableCell>
+    </TableRow>
   )
 }
 
