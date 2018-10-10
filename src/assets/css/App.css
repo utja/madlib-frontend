@@ -35,6 +35,8 @@ canvas {
 
 img.drawing {
   background: whitesmoke;
+  height: 450px;
+  width: 450px;
 }
 
 .stories-container {
