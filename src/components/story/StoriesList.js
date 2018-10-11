@@ -33,7 +33,7 @@ class StoriesList extends React.Component {
     return(
       <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Stories</h1>
-        <Grid item container direction="column-reverse">
+        <Grid item container >
           <Table style={{height: '450px'}}>
             <TableBody>
               {mapStoryItems}
