@@ -31,7 +31,7 @@ class DrawingsList extends React.Component {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.drawings.length - page * rowsPerPage);
     const mapDrawingItems = this.props.drawings.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(drawing => <DrawingItem key={drawing.id} drawing={drawing}/>)
     return(
-      <Grid item container direction="column" xs={3}>
+      <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Drawings</h1>
           <Grid item container direction="column-reverse">
             <Table style={{height: '450px'}}>
