@@ -1,13 +1,7 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
 import DrawingItem from './DrawingItem'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
 import TablePaginationActionsWrapped from '../TablePaginationActions'
+import { Grid, Table, TableBody, TableCell, TableFooter, TablePagination, TableRow } from '@material-ui/core';
 
 class DrawingsList extends React.Component {
   constructor(props){
@@ -28,8 +22,9 @@ class DrawingsList extends React.Component {
   
   render(){
     const { rowsPerPage, page } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.drawings.length - page * rowsPerPage);
-    const mapDrawingItems = this.props.drawings.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(drawing => <DrawingItem key={drawing.id} drawing={drawing}/>)
+    const { drawings } = this.props
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, drawings.length - page * rowsPerPage);
+    const mapDrawingItems = drawings.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(drawing => <DrawingItem key={drawing.id} drawing={drawing}/>)
     return(
       <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Drawings</h1>
@@ -47,7 +42,7 @@ class DrawingsList extends React.Component {
                 <TableRow>
                   <TablePagination
                     colSpan={2}
-                    count={this.props.drawings.length}
+                    count={drawings.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onChangePage={this.handleChangePage}

@@ -33,6 +33,7 @@ class ColorPicker extends React.Component {
       left: '0px',
     }
     
+    //https://stackoverflow.com/questions/35969656/how-can-i-generate-the-opposite-color-according-to-current-color
     function padZero(str, len) {
       len = len || 2;
       var zeros = new Array(len).join('0');
@@ -71,6 +72,8 @@ class ColorPicker extends React.Component {
       div: {
         zIndex: 3
       },
+      // have button font color to be black or white from invertColor fn
+      // background color will be set to color that is picked
       button: {
         color: invertColor(this.props.color, true),
         backgroundColor: this.props.color

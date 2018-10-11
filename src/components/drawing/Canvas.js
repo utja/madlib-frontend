@@ -1,21 +1,13 @@
 import React, { Fragment } from 'react'
-import { fabric } from 'fabric'
-import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { fabric } from 'fabric'
+import { withRouter } from 'react-router-dom'
 import ColorPicker from './ColorPicker'
 import { postDrawing } from '../../actions/drawing'
-import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-// import Radio from '@material-ui/core/Radio';
-// import RadioGroup from '@material-ui/core/RadioGroup';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-// import FormLabel from '@material-ui/core/FormLabel';
-import Typography from '@material-ui/core/Typography';
+import { Button, FormControl, Grid, TextField, Typography } from '@material-ui/core'
 import Slider from '@material-ui/lab/Slider';
-import TextField from '@material-ui/core/TextField';
-import { withRouter } from 'react-router-dom'
 
 const styles = {
   button: {
@@ -158,21 +150,6 @@ class Canvas extends React.Component {
           </Grid>
           <Grid item xs={3}>
             <FormControl component="fieldset" className={classes.formControl}>
-              {/* <FormLabel component="legend">Mode</FormLabel>
-              <RadioGroup
-                aria-label="canvas-control"
-                name="value"
-                className={classes.group}
-                value={this.state.value}
-                onChange={this.handleChange}
-              > */}
-                {/* <FormControlLabel
-                  value="Brush"
-                  control={<Radio color="primary" />}
-                  label="Brush"
-                  labelPlacement="end"
-                />
-              </RadioGroup> */}
               <ColorPicker label={'Pick Brush Color'}color={this.state.brushColor} handleColor={this.handleBrushColor} />
               <Typography  id="brush-width">Brush Width: {Math.round(this.state.brushWidth)}</Typography>
               <Slider min={1} max={100} name="brushWidth" value={this.state.brushWidth} aria-labelledby="brush-width" onChange={this.handleBrushSlide} />
@@ -208,10 +185,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-// export default compose(
-//   withStyles(styles),
-//   connect(mapStateToProps, mapDispatchToProps)
-//   )(Canvas)
 export default compose(
   withStyles(styles),
   withRouter,

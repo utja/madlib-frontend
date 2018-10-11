@@ -1,11 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -15,25 +12,20 @@ const styles = theme => ({
   }
 })
 
-// change to functional
-class DrawingCard extends React.Component {
+const DrawingCard = ({ classes, drawing }) => {
 
-  render(){
-    const { classes } = this.props
-    return(
-      <Grid item xs >
-        <Card className={classes.root}>
-          <CardContent>
-            <img className="drawing" src={this.props.drawing.data_url} alt={this.props.drawing.title}/>
-            <Typography align="center" variant="headline" component="h1">
-              {this.props.drawing.title}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    )
-  }
-
+  return(
+    <Grid item xs >
+      <Card className={classes.root}>
+        <CardContent>
+          <img className="drawing" src={drawing.data_url} alt={drawing.title}/>
+          <Typography align="center" variant="headline" component="h1">
+            {drawing.title}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+  )
 }
 
 const mapStateToProps = state => {
