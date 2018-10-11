@@ -1,13 +1,12 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
-import StoriesList from './StoriesList'
-import { withStyles } from '@material-ui/core/styles';
-import withAuth from '../../hocs/withAuth'
-import { getStories } from '../../actions/story'
-import { connect } from 'react-redux'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { getStories } from '../../actions/story'
+import StoriesList from './StoriesList'
 import StoryCard from './StoryCard';
-import Loading from '../Loading';
+import withAuth from '../../hocs/withAuth'
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   button: {
@@ -20,44 +19,28 @@ const styles = theme => ({
 })
 
 class AllStories extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      loading: true
-    }
-  }
-  
-  // async componentDidMount() {
-  //   const response = await this.props.getStories()
-  //   this.setState({loading:false})
-  // }
+
   componentDidMount() {
     this.props.getStories()
-    this.setState({loading:false})
   }
 
   render(){
-    const { classes} = this.props
-    if (this.state.loading) {
-      return <Loading />
-    } else {
-      return(
-        <Grid className={classes.container} container justify="space-around">
-          <StoriesList stories={this.props.stories}/>
-          {this.props.selectedStory ? 
-            <Grid container item xs direction="column" alignItems="center" spacing={24}>
-              <Grid item>
-                <StoryCard/>
-              </Grid>
+    const { classes, stories, selectedStory } = this.props
+    return(
+      <Grid className={classes.container} container justify="space-around">
+        <StoriesList stories={stories}/>
+        {selectedStory ? 
+          <Grid container item xs direction="column" alignItems="center" spacing={24}>
+            <Grid item>
+              <StoryCard/>
             </Grid>
-          : null}
-        </Grid>
-      )
-    }
+          </Grid>
+        : null}
+      </Grid>
+    )
   }
 }
 
-// export default AllStories
 const mapStateToProps = state => {
   return {
     stories: state.stories.stories,

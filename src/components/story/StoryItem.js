@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Button from '@material-ui/core/Button'
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
+import { Button, TableCell, TableRow } from '@material-ui/core'
 
 const StoryItem = props => {
 
   const handleClick = (event) => {
     props.selectStory(props.story)
   }
+
   const { story: { id, title} } = props
+  
   return(
     <TableRow key={id} style={{height: 48}}>
       <TableCell component="th" scope="row">

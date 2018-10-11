@@ -1,12 +1,6 @@
 import React from 'react'
 import StoryItem from './StoryItem'
-import Grid from '@material-ui/core/Grid';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import { Grid, Table, TableBody, TableCell, TableFooter, TablePagination, TableRow } from '@material-ui/core';
 import TablePaginationActionsWrapped from '../TablePaginationActions'
 
 class StoriesList extends React.Component {
@@ -28,8 +22,9 @@ class StoriesList extends React.Component {
   
   render(){
     const { rowsPerPage, page } = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.props.stories.length - page * rowsPerPage);
-    const mapStoryItems = this.props.stories.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(story => <StoryItem key={story.id} story={story} />);
+    const { stories } = this.props;
+    const emptyRows = rowsPerPage - Math.min(rowsPerPage, stories.length - page * rowsPerPage);
+    const mapStoryItems = stories.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(story => <StoryItem key={story.id} story={story} />);
     return(
       <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Stories</h1>
@@ -47,7 +42,7 @@ class StoriesList extends React.Component {
               <TableRow>
                 <TablePagination
                   colSpan={2}
-                  count={this.props.stories.length}
+                  count={stories.length}
                   rowsPerPage={rowsPerPage}
                   page={page}
                   onChangePage={this.handleChangePage}
@@ -59,7 +54,8 @@ class StoriesList extends React.Component {
           </Table>
         </Grid>
       </Grid>
-  )}
+    )
+  }
 }
 
 export default StoriesList

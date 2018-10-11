@@ -1,15 +1,12 @@
 import React from 'react'
-import Story from './Story';
-import Button from '@material-ui/core/Button'
-import PaletteIcon from '@material-ui/icons/Palette'
-import { Link } from 'react-router-dom'
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Story from './Story';
 import { getStory } from '../../actions/story'
-
-
+import { Button, Grid } from '@material-ui/core'
+import PaletteIcon from '@material-ui/icons/Palette'
+import { withStyles } from '@material-ui/core/styles';
 
 class StoryCard extends React.Component {
 

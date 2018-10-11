@@ -1,19 +1,16 @@
 import React, {Fragment} from 'react'
 import { connect } from 'react-redux'
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider';
+import { Button, ListItem, ListItemText } from '@material-ui/core'
 
 const TemplateItem = props => {
-  // console.log('template item props are', props)
+  
   const handleClick = (event) => {
     props.selectTemplate(props.template)
   }
 
   return (
     <Fragment>
-      <ListItem>
+      <ListItem divider>
         <ListItemText 
           primary={props.template.title}>
         </ListItemText>
@@ -21,7 +18,6 @@ const TemplateItem = props => {
           Select
         </Button>
         </ListItem>
-        <Divider />
     </Fragment>
   )
 }

@@ -3,10 +3,10 @@ import TemplateItem from './TemplateItem'
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 
-const TemplatesList = props => {
+const TemplatesList = ({ templates }) => {
 
-  const mapTemplates = props.templates.map(template => <TemplateItem template={template} key={template.id} />)
-  // const renderStoryItems = props.stories.map(story => <StoryItem key={story.id} story={story} />)
+  const mapTemplates = templates.map(template => <TemplateItem template={template} key={template.id} />)
+  
   return(
     <Grid item className="template-list">
       <List>

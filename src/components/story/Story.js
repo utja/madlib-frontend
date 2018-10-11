@@ -1,10 +1,7 @@
 import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core';
 
 const styles = theme => ({
@@ -15,7 +12,9 @@ const styles = theme => ({
 })
 
 const Story = props => {
-  const { classes } = props
+
+  const { classes } = props;
+
   return(
     <Grid item xs>
       <Card className={classes.root}>

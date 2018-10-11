@@ -9,9 +9,7 @@ const styles = theme => ({
   }
 })
 
-const WordInput = props => {
-
-  const { classes, word, handleChange } = props;
+const WordInput = ({ classes, word, handleChange }) => {
 
   return(
     <TextField
