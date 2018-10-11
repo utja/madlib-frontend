@@ -24,7 +24,6 @@ const DrawingItem = props => {
         </Button>
       </TableCell>
     </TableRow>
-
   )
 }
 

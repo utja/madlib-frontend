@@ -22,9 +22,9 @@ class DrawingsList extends React.Component {
   
   render(){
     const { rowsPerPage, page } = this.state;
-    const { drawings } = this.props
+    const { drawings } = this.props;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, drawings.length - page * rowsPerPage);
-    const mapDrawingItems = drawings.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(drawing => <DrawingItem key={drawing.id} drawing={drawing}/>)
+    const mapDrawingItems = drawings.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(drawing => <DrawingItem key={drawing.id} drawing={drawing}/>);
     return(
       <Grid item container direction="column" xs={4}>
         <h1 className="cursive">Drawings</h1>
@@ -54,7 +54,8 @@ class DrawingsList extends React.Component {
             </Table>
           </Grid>
       </Grid>
-  )}
+    )
+  }
 }
 
 export default DrawingsList

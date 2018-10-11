@@ -13,7 +13,6 @@ const styles = theme => ({
 })
 
 const DrawingCard = ({ classes, drawing }) => {
-
   return(
     <Grid item xs >
       <Card className={classes.root}>

@@ -30,6 +30,7 @@ class Canvas extends React.Component {
       shadowOffsetY: 0,
       title: ''
     }
+    
     this.canvas = new fabric.Canvas('c', {
       isDrawingMode: true
     })
@@ -42,7 +43,6 @@ class Canvas extends React.Component {
 
     this.canvas = canvas
     this.canvas.freeDrawingBrush = new fabric[this.state.value + 'Brush'](this.canvas);
-    
     this.canvas.freeDrawingBrush.color = this.state.brushColor;
     this.canvas.freeDrawingBrush.width = this.state.brushWidth;
     this.canvas.freeDrawingBrush.shadow = new fabric.Shadow({
@@ -57,7 +57,7 @@ class Canvas extends React.Component {
   
   componentDidUpdate(){
     this.canvas.freeDrawingBrush = new fabric[this.state.value + 'Brush'](this.canvas);
-
+    
     if (this.canvas.freeDrawingBrush) {
       this.canvas.freeDrawingBrush.color = this.state.brushColor;
       this.canvas.freeDrawingBrush.width = this.state.brushWidth;
@@ -124,52 +124,52 @@ class Canvas extends React.Component {
 
   render(){
     const { classes } = this.props
-      return(
-        <Fragment>
-          <Grid item xs={4} className="canvas">
-              <canvas id="c" width="450" height="450">                    
-              </canvas>
-              <TextField
-                id="outlined-helperText"
-                name="title"
-                margin="normal"
-                variant="outlined"
-                label="title"
-                className={classes.textField}
-                onChange={this.handleChange}
-                required />
-              {this.state.title === "" ? 
-                <Button disabled className={this.props.classes.button} size="small" color="primary" variant="contained">
-                  Submit
-                </Button>
-              :
-                <Button onClick={(event) => this.handleSubmit(event, this.canvas)} className={this.props.classes.button} size="small" color="primary" variant="contained">
-                  Submit
-                </Button>
-              }
-          </Grid>
-          <Grid item xs={3}>
-            <FormControl component="fieldset" className={classes.formControl}>
-              <ColorPicker label={'Pick Brush Color'}color={this.state.brushColor} handleColor={this.handleBrushColor} />
-              <Typography  id="brush-width">Brush Width: {Math.round(this.state.brushWidth)}</Typography>
-              <Slider min={1} max={100} name="brushWidth" value={this.state.brushWidth} aria-labelledby="brush-width" onChange={this.handleBrushSlide} />
-              <Typography id="shadow-width">Shadow Width: {Math.round(this.state.shadowWidth)}</Typography>
-              <Slider min={0} max={100} name="shadowWidth" value={this.state.shadowWidth} aria-labelledby="shadow-width" onChange={this.handleShadowWidthSlide} />
-              <ColorPicker label={'Pick Shadow Color'} color={this.state.shadowColor} handleColor={this.handleShadowColor} />
-              <Typography id="shadow-offset-x">Shadow Offset X: {Math.round(this.state.shadowOffsetX)}</Typography>
-              <Slider min={-50} max={50} name="shadowOffsetX" value={this.state.shadowOffsetX} aria-labelledby="shadow-offset-x" onChange={this.handleShadowOffsetXSlide} />
-              <Typography id="shadow-offset-y">Shadow Offset Y: {Math.round(this.state.shadowOffsetY)}</Typography>
-              <Slider min={-50} max={50} name="shadowOffsetY" value={this.state.shadowOffsetY} aria-labelledby="shadow-offset-y" onChange={this.handleShadowOffsetYSlide} />
-              <Button onClick={this.handleBrushReset} className={this.props.classes.button} size="small" color="primary" variant="contained">
-                Reset Shadow Brush and Offsets
+    return(
+      <Fragment>
+        <Grid item xs={4} className="canvas">
+            <canvas id="c" width="450" height="450">                    
+            </canvas>
+            <TextField
+              id="outlined-helperText"
+              name="title"
+              margin="normal"
+              variant="outlined"
+              label="title"
+              className={classes.textField}
+              onChange={this.handleChange}
+              required />
+            {this.state.title === "" ? 
+              <Button disabled className={this.props.classes.button} size="small" color="primary" variant="contained">
+                Submit
               </Button>
-              <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
-                Clear Canvas
+            :
+              <Button onClick={(event) => this.handleSubmit(event, this.canvas)} className={this.props.classes.button} size="small" color="primary" variant="contained">
+                Submit
               </Button>
-            </FormControl>
-          </Grid>
-        </Fragment>
-      )
+            }
+        </Grid>
+        <Grid item xs={3}>
+          <FormControl component="fieldset" className={classes.formControl}>
+            <ColorPicker label={'Pick Brush Color'}color={this.state.brushColor} handleColor={this.handleBrushColor} />
+            <Typography  id="brush-width">Brush Width: {Math.round(this.state.brushWidth)}</Typography>
+            <Slider min={1} max={100} name="brushWidth" value={this.state.brushWidth} aria-labelledby="brush-width" onChange={this.handleBrushSlide} />
+            <Typography id="shadow-width">Shadow Width: {Math.round(this.state.shadowWidth)}</Typography>
+            <Slider min={0} max={100} name="shadowWidth" value={this.state.shadowWidth} aria-labelledby="shadow-width" onChange={this.handleShadowWidthSlide} />
+            <ColorPicker label={'Pick Shadow Color'} color={this.state.shadowColor} handleColor={this.handleShadowColor} />
+            <Typography id="shadow-offset-x">Shadow Offset X: {Math.round(this.state.shadowOffsetX)}</Typography>
+            <Slider min={-50} max={50} name="shadowOffsetX" value={this.state.shadowOffsetX} aria-labelledby="shadow-offset-x" onChange={this.handleShadowOffsetXSlide} />
+            <Typography id="shadow-offset-y">Shadow Offset Y: {Math.round(this.state.shadowOffsetY)}</Typography>
+            <Slider min={-50} max={50} name="shadowOffsetY" value={this.state.shadowOffsetY} aria-labelledby="shadow-offset-y" onChange={this.handleShadowOffsetYSlide} />
+            <Button onClick={this.handleBrushReset} className={this.props.classes.button} size="small" color="primary" variant="contained">
+              Reset Shadow Brush and Offsets
+            </Button>
+            <Button onClick={() => this.handleClear(this.canvas)} id="clear-canvas" className={this.props.classes.button} size="small" color="primary" variant="contained">
+              Clear Canvas
+            </Button>
+          </FormControl>
+        </Grid>
+      </Fragment>
+    )
   }
 }
 
@@ -179,6 +179,7 @@ const mapStateToProps = state => {
     user: state.user.user
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     postDrawing: (dataURL, storyID, userID, title) => dispatch(postDrawing(dataURL, storyID, userID, title))

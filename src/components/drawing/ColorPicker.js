@@ -25,6 +25,7 @@ class ColorPicker extends React.Component {
       position: 'absolute',
       zIndex: '2',
     }
+
     const cover = {
       position: 'fixed',
       top: '0px',
