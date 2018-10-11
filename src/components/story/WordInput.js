@@ -31,7 +31,6 @@ const WordInput = ({ classes, word, handleChange }) => {
      >
     </TextField>
   )
-
 }
 
 export default withStyles(styles)(WordInput)
