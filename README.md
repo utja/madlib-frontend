@@ -4,7 +4,22 @@ Combine the fun of Madlibs and the creativity of drawing with Ad Scribitum.
 
 ## Demo and Examples
 
-Check out the demo [here]().
+Check out the app [here](https://ad-scribitum.herokuapp.com).
+Signup or login with the guest username and password below.
+
+username: guest
+password: guestguest
+
+### Examples
+Choose a template to make a new story.
+![create a new story](./examples/story_templates.gif)
+
+Select a story and create a drawing.
+![create a new drawing](./examples/create_drawing.gif)
+
+Check out other user stories and drawings!
+![view existing drawings](./examples/view_drawings.gif)
+
 
 ## Getting Started
 
