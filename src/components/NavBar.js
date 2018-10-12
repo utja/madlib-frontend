@@ -50,11 +50,11 @@ const userItems = [
     name: "Profile",
     link: "/profile"
   },
-  {
-    id: "settings",
-    name: "Account Settings",
-    link: "/settings"
-  },
+  // {
+  //   id: "settings",
+  //   name: "Account Settings",
+  //   link: "/settings"
+  // },
 ]
 
 
